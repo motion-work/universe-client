@@ -11,7 +11,9 @@ export class InviteComponent implements OnInit {
 
 
   permalink = '';
-  galaxy = {};
+  galaxy = {
+    name: undefined
+  };
   user = {email: undefined};
   loading = false;
 
