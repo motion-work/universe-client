@@ -3,11 +3,19 @@
     <div class="col-md-6">
       <h1>Choose your Galaxy</h1>
 
+      <a routerLink="/galaxy/new" class="btn btn-primary">Create a new Galaxy</a>
+
+      <hr>
+
+      <p *ngIf="galaxies.length == 0">You have no Galaxies</p>
+
       <ul class="list-group">
         <li class="list-group-item" *ngFor="let galaxy of galaxies">
           <a routerLink="/galaxy/{{ galaxy.permalink }}/cosmos">{{ galaxy.name }}</a>
         </li>
       </ul>
+
+      <a routerLink="/auth/logout">Logout</a>
 
     </div>
   </div>

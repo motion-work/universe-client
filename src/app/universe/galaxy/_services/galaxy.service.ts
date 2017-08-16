@@ -1,15 +1,22 @@
 import {Injectable} from '@angular/core';
 import {AuthHttp} from 'angular2-jwt';
-import {environment} from '../../../../environments/environment';
 import {AuthService} from '../../../authentication/_services/auth.service';
-import {Router} from '@angular/router';
+import 'rxjs/add/operator/toPromise';
+import 'rxjs/operator/map';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class GalaxyService {
 
-  static HOST = environment.api_host;
+  constructor(private http: AuthHttp) {
+  }
 
-  constructor(private http: AuthHttp, private router: Router) {
+  /**
+   * @param permalink
+   * @return {Promise<boolean|boolean>}
+   */
+  exists(permalink) {
+    return this.http.get(AuthService.HOST + `api/galaxy/${permalink}`);
   }
 
   get(permalink) {
@@ -26,6 +33,24 @@ export class GalaxyService {
 
   accept(permalink, token) {
     return this.http.get(AuthService.HOST + `api/invite/accept/${permalink}/${token}`);
+  }
+
+  /**
+   * Set the current galaxy to local storage
+   *
+   * @param permalink
+   */
+  setCurrentGalaxy(permalink) {
+    return localStorage.setItem('currentGalaxy', permalink);
+  }
+
+  /**
+   * Get the current galaxy from local storage
+   *
+   * @return {string|null}
+   */
+  getCurrentGalaxy() {
+    return localStorage.getItem('currentGalaxy');
   }
 
 }

@@ -9,6 +9,7 @@ import {GalaxyService} from '../_services/galaxy.service';
 })
 export class InviteComponent implements OnInit {
 
+
   permalink = '';
   galaxy = {};
   user = {email: undefined};
@@ -21,6 +22,10 @@ export class InviteComponent implements OnInit {
   ngOnInit() {
     this.getParams();
     this.getGalaxy();
+  }
+
+  selectAllContent($event) {
+    $event.target.select();
   }
 
   getGalaxy() {
@@ -37,7 +42,7 @@ export class InviteComponent implements OnInit {
 
   sendInvite() {
     this.galaxyService.sendInvite(this.user, this.permalink).subscribe(data => {
-      console.log(data);
+      // this.user.email = '';
     });
   }
 

@@ -1,15 +1,15 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../_services/auth.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
-export class LoginComponent implements OnInit {
+export class RegisterComponent implements OnInit {
 
-  credentials: any = {};
+  user: any = {};
   loading = false;
   returnUrl: string;
 
@@ -19,14 +19,15 @@ export class LoginComponent implements OnInit {
               private route: ActivatedRoute) {
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    console.log(this.returnUrl);
   }
 
   ngOnInit() {
   }
 
-  login() {
+  register() {
     this.loading = true;
-    this.authService.login(this.credentials)
+    this.authService.register(this.user)
       .subscribe(response => {
         localStorage.setItem('token', response.json().access_token);
         this.router.navigate([this.returnUrl]);

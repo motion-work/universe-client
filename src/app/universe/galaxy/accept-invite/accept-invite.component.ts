@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {GalaxyService} from '../_services/galaxy.service';
+import {AuthService} from '../../../authentication/_services/auth.service';
 
 @Component({
   selector: 'app-accept-invite',
@@ -11,10 +12,13 @@ export class AcceptInviteComponent implements OnInit {
 
   permalink = '';
   token = '';
+  galaxy = {};
+  inviteValidationFailed = false;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private galaxyService: GalaxyService) {
+              private galaxyService: GalaxyService,
+              private authService: AuthService) {
   }
 
   ngOnInit() {
@@ -24,15 +28,16 @@ export class AcceptInviteComponent implements OnInit {
 
   getParams() {
     this.route.params.subscribe((params: Params) => {
-      this.permalink = params['galaxyPermalink'];
+      this.permalink = params['permalink'];
       this.token = params['token'];
     });
   }
 
   acceptInvite() {
     this.galaxyService.accept(this.permalink, this.token).subscribe(data => {
-      this.router.navigate(['galaxy', this.permalink]);
-    });
+      this.router.navigate([`/galaxy/${this.permalink}/cosmos`]);
+    },
+    error => this.inviteValidationFailed = true);
   }
 
 }

@@ -9,7 +9,8 @@
       <form email="form" (ngSubmit)="f.form.valid && sendInvite()" #f="ngForm" novalidate>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
           <label for="email">Email</label>
-          <input id="email" type="email" name="email" class="form-control" [(ngModel)]="user.email" #email="ngModel" required />
+          <input id="email" type="email" name="email" class="form-control" [(ngModel)]="user.email" #email="ngModel" required
+                 (focus)="selectAllContent($event)" (mouseup)="$event.preventDefault()"/>
           <div *ngIf="f.submitted && !email.valid" class="help-block">Email is required</div>
         </div>
         <div class="form-group">

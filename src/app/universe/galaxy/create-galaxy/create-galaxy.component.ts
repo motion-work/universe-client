@@ -21,7 +21,7 @@ export class CreateGalaxyComponent implements OnInit {
   create() {
     this.galaxyService.store(this.galaxy)
       .subscribe(data => {
-        this.router.navigate(['/galaxy/invite', data.json().permalink]);
+        this.router.navigate([`/galaxy/${data.json().permalink}/invite`]);
       });
   }
 

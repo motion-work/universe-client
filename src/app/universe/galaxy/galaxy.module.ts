@@ -9,20 +9,22 @@ import {GalaxyService} from './_services/galaxy.service';
 import {InviteComponent} from './invite/invite.component';
 import {AcceptInviteComponent} from './accept-invite/accept-invite.component';
 import {CosmosModule, cosmosRoutes} from './cosmos/cosmos.module';
-import { GetStartedComponent } from './get-started/get-started.component';
+import {GetStartedComponent} from './get-started/get-started.component';
+import {GalaxyExistenceGuard} from './_services/galaxy-existence.guard';
 
 export const galaxyRoutes: Routes = [
   {path: 'get-started', component: GetStartedComponent},
-  {path: 'new', component: CreateGalaxyComponent},
+  {path: 'galaxy/new', component: CreateGalaxyComponent},
+  {path: 'invite/accept/:permalink/:token', component: AcceptInviteComponent},
   {
     path: 'galaxy/:permalink',
     component: GalaxyComponent,
     children: [
       {path: 'invite', component: InviteComponent},
-      {path: 'invite/accept/:galaxyPermalink/:token', component: AcceptInviteComponent},
       ...cosmosRoutes
     ]
-  }
+  },
+  {path: '**', redirectTo: 'get-started'}
 ];
 
 @NgModule({
@@ -40,7 +42,10 @@ export const galaxyRoutes: Routes = [
     AcceptInviteComponent,
     GetStartedComponent
   ],
-  providers: [GalaxyService]
+  providers: [
+    GalaxyService,
+    GalaxyExistenceGuard
+  ]
 })
 export class GalaxyModule {
 }

@@ -9,6 +9,7 @@ import {Http, HttpModule, RequestOptions} from '@angular/http';
 import {FormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import {NotLoggedInGuard} from './_services/not-logged-in.guard';
+import { RegisterComponent } from './register/register.component';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig(), http, options);
@@ -20,6 +21,7 @@ const authenticationRoutes: Routes = [
     path: 'auth', component: AuthenticationComponent,
     children: [
       {path: 'login', component: LoginComponent, canActivate: [NotLoggedInGuard]},
+      {path: 'register', component: RegisterComponent, canActivate: [NotLoggedInGuard]},
       {path: 'logout', component: LogoutComponent},
     ]
   }
@@ -32,7 +34,7 @@ const authenticationRoutes: Routes = [
     FormsModule,
     RouterModule.forChild(authenticationRoutes)
   ],
-  declarations: [LoginComponent, LogoutComponent, AuthenticationComponent],
+  declarations: [LoginComponent, LogoutComponent, AuthenticationComponent, RegisterComponent],
   providers: [
     NotLoggedInGuard,
     AuthService,

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import {environment} from '../../../environments/environment';
-import {AuthHttp} from "angular2-jwt";
+import {AuthHttp} from 'angular2-jwt';
 
 @Injectable()
 export class AuthService {
@@ -30,6 +30,17 @@ export class AuthService {
     };
 
     return this.http.post(AuthService.HOST + 'oauth/token', data);
+  }
+
+  /**
+   * Log out user
+   */
+  logout() {
+    return !!localStorage.removeItem('token');
+  }
+
+  register(user) {
+    return this.http.post(AuthService.HOST + 'oauth/register', user);
   }
 
   /**

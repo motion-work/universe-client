@@ -22,6 +22,6 @@ export const cosmosRoutes: Routes = [
   ],
   declarations: [
     CosmosComponent
-  ]
+  ],
 })
 export class CosmosModule { }

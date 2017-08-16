@@ -15,7 +15,7 @@ export const universeRoutes: Routes = [
       {path: '', redirectTo: '/get-started', pathMatch: 'full'},
       ...galaxyRoutes
     ]
-  }
+  },
 ];
 
 
