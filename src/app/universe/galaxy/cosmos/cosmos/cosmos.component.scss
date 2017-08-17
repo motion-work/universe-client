@@ -1,31 +1,38 @@
 .second-level {
-  color: #fff;
-  background-color: #1F2532;
-  height: 90px;
-
-  .profile-dropdown {
-    background-color: transparent;
-    color: #fff;
-    border: none;
-  }
-  .profile-dropdown:focus {
-    outline: 0;
-  }
-}
-
-.third-level {
-  background-color: #1F2532;
   height: 40px;
 
   .item {
-    margin-right: 40px;
+    height: 100%;
+    display: inline-block;
+    margin: 0 20px;
 
     a {
-      color: #fff;
+      padding: 0 10px;
+      color: #596377;
     }
     a:hover {
       color: #fff;
       text-decoration: none;
     }
+    .cosmos-active-link {
+      color: #fff;
+      border-bottom: solid 2px #1E88E5;
+      padding-bottom: 15px;
+    }
   }
 }
+
+//.second-level {
+//  color: #fff;
+//  background-color: #1F2532;
+//  height: 60px;
+//
+//  .profile-dropdown {
+//    background-color: transparent;
+//    color: #fff;
+//    border: none;
+//  }
+//  .profile-dropdown:focus {
+//    outline: 0;
+//  }
+//}

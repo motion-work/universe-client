@@ -4,3 +4,18 @@ html, body {
   font-family: 'Nunito', sans-serif;
   background-color: #F9F9FB;
 }
+
+/**
+* Utilities
+ */
+
+.bg-navigation {
+  background-color: #1F2532;
+}
+.scrolls {
+  vertical-align: middle;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  height: 80px;
+  white-space:nowrap
+}

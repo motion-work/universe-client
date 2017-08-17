@@ -1,21 +1,12 @@
-.scrolls {
-  vertical-align: middle;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  height: 80px;
-  white-space:nowrap
-}
-
 .navbar {
   color: #fff;
-  background-color: #1F2532;
 
   .first-level {
-    height: 40px;
+    //height: 40px;
 
     .item {
       display: inline-block;
-      font-size: 0.8em;
+      font-size: 1em;
       margin: 5px 50px;
       text-transform: uppercase;
       a {
