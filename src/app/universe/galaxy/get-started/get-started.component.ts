@@ -4,7 +4,7 @@ import {AuthService} from '../../../authentication/_services/auth.service';
 @Component({
   selector: 'app-get-started',
   templateUrl: './get-started.component.html',
-  styleUrls: ['./get-started.component.css'],
+  styleUrls: ['./get-started.component.scss'],
   providers: [AuthService]
 })
 export class GetStartedComponent implements OnInit {

@@ -11,6 +11,7 @@ import {AcceptInviteComponent} from './accept-invite/accept-invite.component';
 import {CosmosModule, cosmosRoutes} from './cosmos/cosmos.module';
 import {GetStartedComponent} from './get-started/get-started.component';
 import {GalaxyExistenceGuard} from './_services/galaxy-existence.guard';
+import { NavigationComponent } from './navigation/navigation.component';
 
 export const galaxyRoutes: Routes = [
   {path: 'get-started', component: GetStartedComponent},
@@ -40,7 +41,8 @@ export const galaxyRoutes: Routes = [
     CreateGalaxyComponent,
     InviteComponent,
     AcceptInviteComponent,
-    GetStartedComponent
+    GetStartedComponent,
+    NavigationComponent
   ],
   providers: [
     GalaxyService,

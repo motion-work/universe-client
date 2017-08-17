@@ -1,0 +1,40 @@
+.scrolls {
+  vertical-align: middle;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  height: 80px;
+  white-space:nowrap
+}
+
+.navbar {
+  color: #fff;
+  background-color: #1F2532;
+
+  .first-level {
+    height: 40px;
+
+    .item {
+      display: inline-block;
+      font-size: 0.8em;
+      margin: 5px 50px;
+      text-transform: uppercase;
+      a {
+        color: #596377;
+      }
+      a:hover {
+        color: #fff;
+        text-decoration: none;
+      }
+      .active-link {
+        padding: 3px 15px;
+        border: solid 1px #fff;
+        border-radius: 14px;
+        color: #fff;
+        font-weight: bold;
+      }
+    }
+
+  }
+
+}
+

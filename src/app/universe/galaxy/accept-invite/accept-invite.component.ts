@@ -6,7 +6,7 @@ import {AuthService} from '../../../authentication/_services/auth.service';
 @Component({
   selector: 'app-accept-invite',
   templateUrl: './accept-invite.component.html',
-  styleUrls: ['./accept-invite.component.css']
+  styleUrls: ['./accept-invite.component.scss']
 })
 export class AcceptInviteComponent implements OnInit {
 

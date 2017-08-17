@@ -53,4 +53,8 @@ export class GalaxyService {
     return localStorage.getItem('currentGalaxy');
   }
 
+  currentGalaxy() {
+    return this.http.get(AuthService.HOST + `api/galaxy/${this.getCurrentGalaxy()}`);
+  }
+
 }

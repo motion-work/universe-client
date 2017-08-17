@@ -5,7 +5,7 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'app-create-galaxy',
   templateUrl: './create-galaxy.component.html',
-  styleUrls: ['./create-galaxy.component.css']
+  styleUrls: ['./create-galaxy.component.scss']
 })
 export class CreateGalaxyComponent implements OnInit {
 
