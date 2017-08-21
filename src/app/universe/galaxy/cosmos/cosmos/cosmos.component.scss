@@ -1,8 +1,9 @@
 .second-level {
+  display: flex;
+  align-items: center;
   height: 40px;
 
   .item {
-    height: 100%;
     display: inline-block;
     margin: 0 20px;
 
@@ -17,7 +18,7 @@
     .cosmos-active-link {
       color: #fff;
       border-bottom: solid 2px #1E88E5;
-      padding-bottom: 15px;
+      padding-bottom: 7px;
     }
   }
 }
