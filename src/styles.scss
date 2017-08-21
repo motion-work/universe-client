@@ -9,13 +9,20 @@ html, body {
 * Utilities
  */
 
+@media (max-width: 1080px) {
+  .hidden-xs {
+    display: none !important;
+  }
+}
+
 .bg-navigation {
   background-color: #1F2532;
 }
+
 .scrolls {
   vertical-align: middle;
   overflow-x: scroll;
   overflow-y: hidden;
   height: 80px;
-  white-space:nowrap
+  white-space: nowrap
 }

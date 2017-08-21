@@ -37,7 +37,7 @@ export class InviteComponent implements OnInit {
   }
 
   getParams() {
-    this.route.parent.params.subscribe((params: Params) => {
+    this.route.params.subscribe((params: Params) => {
       this.permalink = params['permalink'];
     });
   }

@@ -11,17 +11,19 @@ import {AcceptInviteComponent} from './accept-invite/accept-invite.component';
 import {CosmosModule, cosmosRoutes} from './cosmos/cosmos.module';
 import {GetStartedComponent} from './get-started/get-started.component';
 import {GalaxyExistenceGuard} from './_services/galaxy-existence.guard';
-import { NavigationComponent } from './navigation/navigation.component';
+import {NavigationComponent} from './navigation/navigation.component';
+import {HeadUpDisplayComponent} from './head-up-display/head-up-display.component';
+import {FreshLoginGuard} from './_services/fresh-login.guard';
 
 export const galaxyRoutes: Routes = [
-  {path: 'get-started', component: GetStartedComponent},
+  {path: 'get-started', component: GetStartedComponent, canActivate: [FreshLoginGuard]},
   {path: 'galaxy/new', component: CreateGalaxyComponent},
+  {path: 'invite/send/:permalink', component: InviteComponent},
   {path: 'invite/accept/:permalink/:token', component: AcceptInviteComponent},
   {
     path: 'galaxy/:permalink',
     component: GalaxyComponent,
     children: [
-      {path: 'invite', component: InviteComponent},
       ...cosmosRoutes
     ]
   },
@@ -42,11 +44,13 @@ export const galaxyRoutes: Routes = [
     InviteComponent,
     AcceptInviteComponent,
     GetStartedComponent,
-    NavigationComponent
+    NavigationComponent,
+    HeadUpDisplayComponent
   ],
   providers: [
     GalaxyService,
-    GalaxyExistenceGuard
+    GalaxyExistenceGuard,
+    FreshLoginGuard
   ]
 })
 export class GalaxyModule {
