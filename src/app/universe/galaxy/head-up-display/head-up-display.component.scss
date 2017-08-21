@@ -1,0 +1,28 @@
+#head-up-display {
+  height: 60px;
+  color: #fff;
+
+  .item {
+    img {
+      height: 45px;
+    }
+  }
+
+  .profile-dropup {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+  }
+  .profile-dropup:focus {
+    outline: 0;
+  }
+  .profile-dropup:hover {
+    cursor: hand;
+    cursor: pointer;
+  }
+
+  .dropdown-toggle::after {
+    display: none;
+  }
+
+}
