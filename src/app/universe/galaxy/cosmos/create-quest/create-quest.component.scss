@@ -1,0 +1,39 @@
+.modal {
+  background-color: #fff;
+}
+
+.close {
+  outline: 0;
+}
+
+::-webkit-input-placeholder {
+  font-style: italic;
+}
+:-moz-placeholder {
+  font-style: italic;
+}
+::-moz-placeholder {
+  font-style: italic;
+}
+:-ms-input-placeholder {
+  font-style: italic;
+}
+
+img {
+  height: 300px;
+}
+
+.modal-dialog {
+  margin: 0 auto;
+  height: 100%;
+}
+
+.modal-content {
+  background-color: #fff;
+  border: none;
+  height: inherit;
+}
+
+.btn-assistant {
+  min-width: 80px;
+}

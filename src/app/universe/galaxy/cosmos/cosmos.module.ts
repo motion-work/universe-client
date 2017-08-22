@@ -5,6 +5,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {OverviewComponent} from './overview/overview.component';
+import { CreateQuestComponent } from './create-quest/create-quest.component';
 
 export const cosmosRoutes: Routes = [
   {
@@ -12,7 +13,7 @@ export const cosmosRoutes: Routes = [
     component: CosmosComponent,
     children: [
       {path: '', redirectTo: 'overview', pathMatch: 'full'},
-      {path: 'overview', component: OverviewComponent}
+      {path: 'overview', component: OverviewComponent},
     ]
   },
 ];
@@ -27,7 +28,8 @@ export const cosmosRoutes: Routes = [
   ],
   declarations: [
     CosmosComponent,
-    OverviewComponent
+    OverviewComponent,
+    CreateQuestComponent
   ],
 })
 export class CosmosModule {

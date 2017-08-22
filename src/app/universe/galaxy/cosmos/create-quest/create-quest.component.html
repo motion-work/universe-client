@@ -1,0 +1,37 @@
+<!-- Large modal -->
+<button class="btn btn-primary" data-toggle="modal" data-target=".create-quest-modal">New Quest</button>
+
+<div class="modal fade create-quest-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="container text-center">
+
+        <img src="/assets/img/astronaut.jpg" alt="Astronaut" class="img-fluid">
+
+        <h3>Enter a name of your new quest</h3>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group mt-4">
+              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Adventurous quest" autofocus>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-muted">Tip: Use a catchy and expressive title for your quest. This increases the
+          chance of getting more applications.</p>
+
+        <div class="d-flex justify-content-around">
+          <button class="btn btn-secondary btn-assistant" data-dismiss="modal" aria-label="Close">Cancel</button>
+          <button class="btn btn-primary btn-assistant">Next</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
