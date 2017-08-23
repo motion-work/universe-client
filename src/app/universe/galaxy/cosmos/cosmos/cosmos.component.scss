@@ -1,26 +1,8 @@
-.second-level {
-  display: flex;
-  align-items: center;
-  height: 40px;
 
-  .item {
-    display: inline-block;
-    margin: 0 20px;
-
-    a {
-      padding: 0 10px;
-      color: #596377;
-    }
-    a:hover {
-      color: #fff;
-      text-decoration: none;
-    }
-    .cosmos-active-link {
-      color: #fff;
-      border-bottom: solid 2px #1E88E5;
-      padding-bottom: 7px;
-    }
-  }
+.cosmos-active-link {
+  color: #fff !important;
+  border-bottom: solid 2px #1E88E5;
+  padding-bottom: 7px !important;
 }
 
 //.second-level {

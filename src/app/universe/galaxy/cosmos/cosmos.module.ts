@@ -2,10 +2,10 @@ import {NgModule} from '@angular/core';
 import {CosmosComponent} from './cosmos/cosmos.component';
 import {RouterModule, Routes} from '@angular/router';
 import {BrowserModule} from '@angular/platform-browser';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {OverviewComponent} from './overview/overview.component';
-import { CreateQuestComponent } from './create-quest/create-quest.component';
+import {CreateQuestComponent} from './create-quest/create-quest.component';
 
 export const cosmosRoutes: Routes = [
   {
@@ -23,6 +23,7 @@ export const cosmosRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule,
     HttpModule,
   ],

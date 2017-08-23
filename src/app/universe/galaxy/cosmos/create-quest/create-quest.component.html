@@ -1,5 +1,7 @@
 <!-- Large modal -->
-<button class="btn btn-primary" data-toggle="modal" data-target=".create-quest-modal">New Quest</button>
+<button class="btn btn-primary" data-toggle="modal" data-target=".create-quest-modal"><i class="fa fa-plus"></i> New
+  Quest
+</button>
 
 <div class="modal fade create-quest-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
      aria-hidden="true">
@@ -11,25 +13,74 @@
         </button>
       </div>
       <div class="container text-center">
+        <form [formGroup]="formGroup" (ngSubmit)="createQuest()">
 
-        <img src="/assets/img/astronaut.jpg" alt="Astronaut" class="img-fluid">
+          <!-- PAGE 1 -->
 
-        <h3>Enter a name of your new quest</h3>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="form-group mt-4">
-              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Adventurous quest" autofocus>
+          <div class="page" [class.d-none]="page != 1">
+            <img src="/assets/img/astronaut.jpg" alt="Astronaut" class="img-fluid">
+            <h3>Enter the name of your new quest</h3>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group mt-4">
+                  <input type="email" class="form-control" formControlName="name"
+                         placeholder="The most adventurous quest ever">
+                </div>
+              </div>
+            </div>
+            <p class="text-muted"><i class="fa fa-lightbulb-o"></i> Use a catchy and expressive title for your quest.
+              This increases the chance of getting more applications. But don't exaggerate.</p>
+            <div class="d-flex justify-content-around">
+              <button type="button" class="btn btn-secondary btn-assistant" data-dismiss="modal" aria-label="Close">Cancel</button>
+              <button type="button" class="btn btn-primary btn-assistant" (click)="next()">Next</button>
             </div>
           </div>
-        </div>
 
-        <p class="text-muted">Tip: Use a catchy and expressive title for your quest. This increases the
-          chance of getting more applications.</p>
+          <!-- PAGE 2 -->
 
-        <div class="d-flex justify-content-around">
-          <button class="btn btn-secondary btn-assistant" data-dismiss="modal" aria-label="Close">Cancel</button>
-          <button class="btn btn-primary btn-assistant">Next</button>
-        </div>
+          <div class="page" [class.d-none]="page != 2">
+            <img src="/assets/img/astronaut.jpg" alt="Astronaut" class="img-fluid">
+            <h3>What type of quest is it?</h3>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="type-box">
+
+                </div>
+              </div>
+            </div>
+            <p class="text-muted"><i class="fa fa-lightbulb-o"></i> Tip: Use a catchy and expressive title for your
+              quest. This increases the
+              chance of getting more applications. But don't exaggerate.</p>
+            <div class="d-flex justify-content-around">
+              <button type="button" class="btn btn-secondary btn-assistant" (click)="previous()">Back</button>
+              <button type="button" class="btn btn-primary btn-assistant" (click)="next()">Next</button>
+            </div>
+          </div>
+
+          <!-- PAGE 3 -->
+
+          <div class="page" [class.d-none]="page != 3">
+            <img src="/assets/img/astronaut.jpg" alt="Astronaut" class="img-fluid">
+            <h3>Page 3</h3>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group mt-4">
+                  <input type="email" class="form-control" id="exampleFormControlInput1"
+                         placeholder="The most adventurous quest ever" autofocus>
+                </div>
+              </div>
+            </div>
+            <p class="text-muted"><i class="fa fa-lightbulb-o"></i> Tip: Use a catchy and expressive title for your
+              quest. This increases the
+              chance of getting more applications. But don't exaggerate.</p>
+            <div class="d-flex justify-content-around">
+              <button type="button" class="btn btn-secondary btn-assistant" (click)="previous()">Back</button>
+              <button type="submit" class="btn btn-success btn-assistant" [disabled]="!formGroup.valid">Done</button>
+            </div>
+          </div>
+
+
+        </form>
 
       </div>
     </div>
