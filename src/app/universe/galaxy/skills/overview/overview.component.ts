@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {GalaxyService} from '../../_services/galaxy.service';
 
 @Component({
   selector: 'app-overview',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OverviewComponent implements OnInit {
 
-  constructor() { }
+  skillSets = [];
+
+  constructor(private galaxyService: GalaxyService) {
+  }
 
   ngOnInit() {
+    this.galaxyService.skillSets().subscribe(response => {
+      this.skillSets = response.json();
+    });
   }
 
 }

@@ -1,13 +1,30 @@
-@import url('https://fonts.googleapis.com/css?family=Lato|Nunito');
+@import url('https://fonts.googleapis.com/css?family=Lato:400,600,700,800,900|Nunito:400,600,700,800,900');
 
 html, body {
   font-family: 'Nunito', sans-serif;
-  background-color: #F9F9FB;
+  background-color: #fff;
+  min-height: 100%;
+}
+
+a:hover {
+  text-decoration: none;
 }
 
 /**
 * Utilities
  */
+
+.mb-6 {
+  margin-bottom: 4rem !important;
+}
+.mb-7 {
+  margin-bottom: 5rem !important;
+}
+.mb-8 {
+  margin-bottom: 6rem !important;
+}
+
+
 
 @media (max-width: 1080px) {
   .hidden-xs {
@@ -16,7 +33,7 @@ html, body {
 }
 
 .bg-navigation {
-  background-color: #1F2532;
+  background: #fff;
 }
 
 .scrolls {
@@ -41,11 +58,35 @@ html, body {
 
     a {
       padding: 0 10px;
-      color: #596377;
-    }
-    a:hover {
-      color: #fff;
-      text-decoration: none;
+      color: #000;
     }
   }
+}
+
+/*
+ BOOTSTRAP OVERWRITES
+ */
+
+.btn {
+  border-radius: 2em !important;
+}
+
+.progress {
+  border-radius: 1rem;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: .5rem .75rem;
+  font-size: 1rem;
+  line-height: 1.25;
+  color: #000;
+  background-color: #fff;
+  background-image: none;
+  background-clip: padding-box;
+  border: none;
+  border-radius: 1rem;
+  box-shadow: 0 2px 14px rgba(36,37,38,0.08);
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }

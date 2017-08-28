@@ -1,8 +1,98 @@
 <div class="container">
 
-  <h1>Create a new Skill-Set</h1>
+  <h1>Create a new skill set</h1>
+  <p class="mb-5 text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+    been the
+    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it
+    to make a type specimen book. It has survived not only five centuries, but also the leap into electronic
+    typesetting,
+    remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
+    Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of
+    Lorem Ipsum.</p>
 
-  <div class="row">
-    <div class="col-12"></div>
-  </div>
-</div>
+  <form [formGroup]="formGroup" (ngSubmit)="createSkillSet()">
+
+    <!-- PAGE 1 -->
+    <div class="page" [class.d-none]="page != 1">
+      <div class="row justify-content-center animated fadeIn">
+        <div class="col-sm-12 col-md-12 col-lg-6">
+
+          <div class="form-group">
+            <label for="name">Skill Set Name</label>
+            <input type="text" id="name" class="form-control" formControlName="name">
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea type="text" id="description" class="form-control" rows="10"
+                      formControlName="description"></textarea>
+          </div>
+          <div class="form-group">
+            <button type="button" class="btn btn-primary btn-block" (click)="next()">
+              Continue <i class="fa fa-arrow-right"></i>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div> <!-- END page 1 -->
+
+    <!--  PAGE 2 -->
+    <div class="page" [class.d-none]="page != 2">
+      <div formArrayName="skills">
+        <div *ngFor="let skill of formGroup.controls.skills.controls; let i=index">
+          <div [formGroupName]="i">
+            <div class="row justify-content-center animated fadeIn">
+
+              <div class="col-sm-12 col-md-5 col-lg-5">
+                <div class="form-group">
+                  <label for="competence-title">Competence</label>
+                  <input type="text" id="competence-title" class="form-control" formControlName="title">
+                </div>
+              </div>
+
+              <div class="col-sm-12 col-md-5 col-lg-5">
+                <div class="form-group">
+                  <label for="competence-description">Description</label>
+                  <textarea type="text" id="competence-description" class="form-control" rows="5"
+                            formControlName="description"></textarea>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-1 col-lg-1 d-flex align-items-center justify-content-center">
+                <button *ngIf="formGroup.controls.skills.controls.length > 1" (click)="removeSkill(i)"
+                        class="btn btn-danger">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </div>
+
+            </div> <!-- END row -->
+
+          </div> <!-- END arrayItem -->
+        </div> <!-- END ngFor -->
+      </div> <!-- END arrayGroup -->
+
+      <!-- ADD SKILL BUTTON -->
+      <div class="row justify-content-center">
+        <div class="col-2">
+          <button (click)="addSkill()" class="btn btn-primary"><i class="fa fa-plus"></i></button>
+        </div>
+      </div>
+
+      <!-- NAVIGATION BUTTON -->
+      <div class="row mt-5 animated fadeIn">
+        <div class="col-6 d-flex justify-content-start">
+          <button type="button" class="btn btn-primary" (click)="back()">
+            <i class="fa fa-arrow-left"></i> Back
+          </button>
+        </div>
+        <div class="col-6 d-flex justify-content-end">
+          <button class="btn btn-success" type="submit" [disabled]="!formGroup.valid">
+            Done <i class="fa fa-check-circle"></i>
+          </button>
+        </div>
+      </div>
+
+    </div> <!-- END page 2 -->
+
+  </form>
+
+</div> <!-- END container -->

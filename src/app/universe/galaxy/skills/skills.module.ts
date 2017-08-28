@@ -4,7 +4,7 @@ import {RouterModule, Routes} from '@angular/router';
 import { SkillsComponent } from './skills/skills.component';
 import { OverviewComponent } from './overview/overview.component';
 import {HttpModule} from '@angular/http';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import { CreateSkillSetComponent } from './create-skill-set/create-skill-set.component';
 
@@ -25,6 +25,7 @@ export const skillsRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule,
     HttpModule,
   ],

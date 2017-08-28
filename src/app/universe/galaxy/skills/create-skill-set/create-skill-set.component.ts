@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {GalaxyService} from '../../_services/galaxy.service';
 
 @Component({
   selector: 'app-create-skill-set',
@@ -7,9 +9,58 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateSkillSetComponent implements OnInit {
 
-  constructor() { }
+  page = 1;
+  formGroup: FormGroup;
+
+  constructor(private fb: FormBuilder, private galaxyService: GalaxyService) {
+  }
 
   ngOnInit() {
+    this.formGroup = this.fb.group({
+      name: ['', [Validators.required]],
+      description: ['', [Validators.required]],
+      skills: this.fb.array([
+        this.initSetItems(),
+      ])
+    });
+  }
+
+  createSkillSet() {
+    this.galaxyService.storeSkillSet(this.formGroup.value)
+      .subscribe(response => {
+        console.log('skill set created!');
+      });
+  }
+
+  next() {
+    this.page++;
+  }
+
+  back() {
+    this.page--;
+  }
+
+  initSetItems() {
+    return this.fb.group({
+      title: ['', [Validators.required]],
+      description: ['', [Validators.required]],
+    });
+  }
+
+  /**
+   * Add skill set item
+   */
+  addSkill() {
+    const control = <FormArray>this.formGroup.controls['skills'];
+    control.push(this.initSetItems());
+  }
+
+  /**
+   * Remove skill set item
+   */
+  removeSkill(i: number) {
+    const control = <FormArray>this.formGroup.controls['skills'];
+    control.removeAt(i);
   }
 
 }

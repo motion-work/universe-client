@@ -9,12 +9,15 @@
 ::-webkit-input-placeholder {
   font-style: italic;
 }
+
 :-moz-placeholder {
   font-style: italic;
 }
+
 ::-moz-placeholder {
   font-style: italic;
 }
+
 :-ms-input-placeholder {
   font-style: italic;
 }
@@ -42,6 +45,14 @@ img {
   min-width: 80px;
 }
 
-.type-box {
-
+.spin {
+  transition: transform 0.8s ease-in-out;
+  -webkit-transition: transform 0.8s ease-in-out;
 }
+
+.spin:hover {
+  -webkit-transform: rotate(360deg);
+  transform: rotate(360deg);
+}
+
+

@@ -35,6 +35,14 @@ export class GalaxyService {
     return this.http.get(AuthService.HOST + `api/invite/accept/${permalink}/${token}`);
   }
 
+  storeSkillSet(skillSet) {
+    return this.http.post(AuthService.HOST + `api/galaxy/${this.getCurrentGalaxyPermalink()}/createSkillSet`, skillSet);
+  }
+
+  skillSets() {
+    return this.http.get(AuthService.HOST + `api/galaxy/${this.getCurrentGalaxyPermalink()}/skillSets`);
+  }
+
   /**
    * Set the current galaxy to local storage
    *
