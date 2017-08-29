@@ -7,6 +7,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import {CreateSkillSetComponent} from './create-skill-set/create-skill-set.component';
 import {ExploreComponent} from './explore/explore.component';
+import { LimitToPipe} from './_pipes/limit-to.pipe';
 
 export const skillsRoutes: Routes = [
   {
@@ -30,7 +31,13 @@ export const skillsRoutes: Routes = [
     RouterModule,
     HttpModule,
   ],
-  declarations: [SkillsComponent, OverviewComponent, CreateSkillSetComponent, ExploreComponent]
+  declarations: [
+    SkillsComponent,
+    OverviewComponent,
+    CreateSkillSetComponent,
+    ExploreComponent,
+    LimitToPipe,
+  ]
 })
 export class SkillsModule {
 }
