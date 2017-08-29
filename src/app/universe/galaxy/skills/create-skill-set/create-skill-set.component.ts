@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {GalaxyService} from '../../_services/galaxy.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-create-skill-set',
@@ -9,10 +10,13 @@ import {GalaxyService} from '../../_services/galaxy.service';
 })
 export class CreateSkillSetComponent implements OnInit {
 
+
   page = 1;
   formGroup: FormGroup;
 
-  constructor(private fb: FormBuilder, private galaxyService: GalaxyService) {
+  constructor(private fb: FormBuilder,
+              private galaxyService: GalaxyService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -58,7 +62,7 @@ export class CreateSkillSetComponent implements OnInit {
    * Remove skill set item
    */
   removeSkill(i: number) {
-   this.formArraySkills.removeAt(i);
+    this.formArraySkills.removeAt(i);
   }
 
   get formArraySkills() {

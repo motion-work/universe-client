@@ -1,12 +1,12 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import { SkillsComponent } from './skills/skills.component';
-import { OverviewComponent } from './overview/overview.component';
+import {SkillsComponent} from './skills/skills.component';
+import {OverviewComponent} from './overview/overview.component';
 import {HttpModule} from '@angular/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
-import { CreateSkillSetComponent } from './create-skill-set/create-skill-set.component';
+import {CreateSkillSetComponent} from './create-skill-set/create-skill-set.component';
+import {ExploreComponent} from './explore/explore.component';
 
 export const skillsRoutes: Routes = [
   {
@@ -15,6 +15,7 @@ export const skillsRoutes: Routes = [
     children: [
       {path: '', redirectTo: 'overview', pathMatch: 'full'},
       {path: 'overview', component: OverviewComponent},
+      {path: 'explore', component: ExploreComponent},
       {path: 'create', component: CreateSkillSetComponent},
     ]
   },
@@ -29,6 +30,7 @@ export const skillsRoutes: Routes = [
     RouterModule,
     HttpModule,
   ],
-  declarations: [SkillsComponent, OverviewComponent, CreateSkillSetComponent]
+  declarations: [SkillsComponent, OverviewComponent, CreateSkillSetComponent, ExploreComponent]
 })
-export class SkillsModule { }
+export class SkillsModule {
+}

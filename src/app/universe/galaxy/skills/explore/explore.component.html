@@ -1,0 +1,27 @@
+<div class="container">
+  <h1 class="text-center mb-5"><i class="fa fa-compass"></i> Explore</h1>
+
+  <div class="row justify-content-center mb-5">
+    <div class="col-sm-12 col-md-6 col-lg-6">
+        <input type="text" class="form-control search" placeholder="Search skills" autocomplete="off">
+    </div>
+  </div>
+
+  <h4 class="text-muted">Recent</h4>
+  <hr>
+
+  <div class="row">
+    <div *ngFor="let skillSet of skillSets" class="col-sm-12 col-md-12 col-lg-4">
+      <div class="row">
+        <div class="col-sm-6 col-md-6 col-lg-6">
+            <div class="box">
+              <h1>IR</h1>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-6 col-lg-6 mb-5">
+          <h4>{{ skillSet.name }}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

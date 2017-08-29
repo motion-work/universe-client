@@ -54,7 +54,7 @@ export const galaxyRoutes: Routes = [
   providers: [
     GalaxyService,
     GalaxyExistenceGuard,
-    FreshLoginGuard
+    FreshLoginGuard,
   ]
 })
 export class GalaxyModule {
