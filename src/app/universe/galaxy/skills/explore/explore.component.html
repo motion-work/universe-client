@@ -12,12 +12,11 @@
 
   <div class="row">
     <div *ngFor="let skillSet of skillSets" class="col-sm-12 col-md-6 col-lg-4">
-      <div class="card bg-dark text-white mb-4">
-        <img class="card-img" [src]="img" alt="Card image">
-        <div class="card-img-overlay">
-          <h4 class="card-title">{{ skillSet.name }}</h4>
-          <p class="card-text"><a href="" class="btn btn-primary tag">Informatik</a></p>
-          <p class="card-text"><i class="fa fa-user"></i> {{ skillSet.user.fullName }}</p>
+      <div class="card mb-3 shadow-default">
+        <div class="card-body">
+          <img src="https://www.algolia.com/static_assets/images/svg/pillar-icon-saas-61345726.svg" alt="">
+          <h4 class="card-title text-center">{{ skillSet.name }}</h4>
+          <p class="card-text">bulk of the card's content.</p>
         </div>
       </div>
     </div>

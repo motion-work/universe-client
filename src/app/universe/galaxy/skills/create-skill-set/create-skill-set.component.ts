@@ -32,7 +32,7 @@ export class CreateSkillSetComponent implements OnInit {
   createSkillSet() {
     this.galaxyService.storeSkillSet(this.formGroup.value)
       .subscribe(response => {
-        console.log('skill set created!');
+        this.router.navigate(['explore']);
       });
   }
 

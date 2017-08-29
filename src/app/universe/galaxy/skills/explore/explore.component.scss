@@ -1,4 +1,4 @@
-$border-radius: calc(0.5rem - 1px);
+$border-radius: 6px;
 
 .search {
   font-size: 1.5em;
@@ -16,14 +16,13 @@ $border-radius: calc(0.5rem - 1px);
 
 .card {
   border: none;
-  border-radius: $border-radius
+  border-radius: $border-radius;
+  min-height: 270px;
 }
 
-.card-img {
-  border-radius: $border-radius
-}
-
-.card-img-overlay {
-  background-image: linear-gradient(to bottom, rgba(92, 107, 192, 0.1), rgba(92, 107, 192, 0.8));
-  border-radius: $border-radius
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
