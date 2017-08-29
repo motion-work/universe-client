@@ -51,16 +51,18 @@ export class CreateSkillSetComponent implements OnInit {
    * Add skill set item
    */
   addSkill() {
-    const control = <FormArray>this.formGroup.controls['skills'];
-    control.push(this.initSetItems());
+    this.formArraySkills.push(this.initSetItems());
   }
 
   /**
    * Remove skill set item
    */
   removeSkill(i: number) {
-    const control = <FormArray>this.formGroup.controls['skills'];
-    control.removeAt(i);
+   this.formArraySkills.removeAt(i);
+  }
+
+  get formArraySkills() {
+    return <FormArray>this.formGroup.get('skills');
   }
 
 }
