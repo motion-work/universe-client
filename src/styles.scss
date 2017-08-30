@@ -14,25 +14,29 @@ a:hover {
 * Utilities
  */
 
+.link-unstyled, .link-unstyled:hover {
+  color: inherit;
+}
+
 .shadow-default {
-  box-shadow: 0 10px 40px 0 rgba(62,57,107,0.07), 0 2px 9px 0 rgba(62,57,107,0.06);
+  box-shadow: 0 10px 40px 0 rgba(62, 57, 107, 0.07), 0 2px 9px 0 rgba(62, 57, 107, 0.06);
 }
 
 .shadow-b {
-  box-shadow: 0 10px 40px 0 rgba(62,57,107,0.07), 0 2px 9px 0 rgba(62,57,107,0.06);
+  box-shadow: 0 10px 40px 0 rgba(62, 57, 107, 0.07), 0 2px 9px 0 rgba(62, 57, 107, 0.06);
 }
 
 .mb-6 {
   margin-bottom: 4rem !important;
 }
+
 .mb-7 {
   margin-bottom: 5rem !important;
 }
+
 .mb-8 {
   margin-bottom: 6rem !important;
 }
-
-
 
 @media (max-width: 1080px) {
   .hidden-xs {
@@ -95,6 +99,23 @@ a:hover {
   background-clip: padding-box;
   border: none;
   border-radius: 1rem;
-  box-shadow: 0 2px 14px rgba(36,37,38,0.08);
+  box-shadow: 0 2px 14px rgba(36, 37, 38, 0.08);
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+/**
+ ORIZENS/NGX-TYPEAHEAD
+ */
+
+.results {
+  position: absolute;
+  top: 5rem;
+  z-index: 10;
+  width: 100%;
+  border-radius: 1rem;
+  box-shadow: 0 2px 14px rgba(36, 37, 38, 0.08);
+
+  .list-group-item {
+    border: none;
+  }
 }

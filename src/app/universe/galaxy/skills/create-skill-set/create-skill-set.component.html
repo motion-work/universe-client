@@ -27,6 +27,19 @@
                       formControlName="description"></textarea>
           </div>
           <div class="form-group">
+            <label for="tags">Categories</label>
+            <input type="text" id="tags" class="form-control" (keyup.enter)="addTag(tagInput.value); tagInput.value = ''" #tagInput
+            placeholder="Informatik, Design, Leadership...">
+
+            <div class="myTags">
+              <button *ngFor="let tag of formArrayTags.controls; let i=index" type="button"
+                      class="btn btn-primary btn-sm animated bounceIn item"
+                      (click)="removeTag(i)">{{ tag.value }}
+              </button>
+            </div>
+
+          </div>
+          <div class="form-group">
             <button type="button" class="btn btn-primary btn-block" (click)="next()">
               Continue <i class="fa fa-arrow-right"></i>
             </button>

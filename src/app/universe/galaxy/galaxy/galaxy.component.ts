@@ -9,8 +9,7 @@ import {GalaxyService} from '../_services/galaxy.service';
 })
 export class GalaxyComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute,
-              private galaxyService: GalaxyService) {
+  constructor(private route: ActivatedRoute, private galaxyService: GalaxyService) {
     this.route.params.subscribe((params: Params) => {
       this.galaxyService.setCurrentGalaxy(params['permalink']);
     });

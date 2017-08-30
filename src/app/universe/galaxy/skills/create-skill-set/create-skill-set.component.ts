@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {GalaxyService} from '../../_services/galaxy.service';
 import {Router} from '@angular/router';
 
@@ -23,6 +23,7 @@ export class CreateSkillSetComponent implements OnInit {
     this.formGroup = this.fb.group({
       name: ['', [Validators.required]],
       description: ['', [Validators.required]],
+      tags: this.fb.array([]),
       skills: this.fb.array([
         this.initSetItems(),
       ])
@@ -58,11 +59,23 @@ export class CreateSkillSetComponent implements OnInit {
     this.formArraySkills.push(this.initSetItems());
   }
 
+  addTag(name) {
+    this.formArrayTags.push(new FormControl(name, Validators.required));
+  }
+
+  removeTag(i: number) {
+    this.formArrayTags.removeAt(i);
+  }
+
   /**
    * Remove skill set item
    */
   removeSkill(i: number) {
     this.formArraySkills.removeAt(i);
+  }
+
+  get formArrayTags() {
+    return <FormArray>this.formGroup.get('tags');
   }
 
   get formArraySkills() {

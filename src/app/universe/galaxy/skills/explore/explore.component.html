@@ -2,22 +2,48 @@
   <h1 class="text-center mb-5"><i class="fa fa-compass"></i> Explore</h1>
 
   <div class="row justify-content-center mb-5">
-    <div class="col-sm-12 col-md-6 col-lg-6">
-      <input type="text" class="form-control search" placeholder="Search skills" autocomplete="off">
+    <div class="col-sm-12 col-md-12 col-lg-8">
+      <input type="text" class="form-control search" placeholder="Search skills" autocomplete="off" (keyup)="search()"
+             [(ngModel)]="query">
     </div>
   </div>
 
-  <h4 class="text-muted">Recent</h4>
-  <hr>
+  <!-- SEARCH -->
+  <div class="search-results" *ngIf="query.length > 1">
+    <h4 class="text-muted">Search Results for "{{ query }}"</h4>
+    <hr>
 
-  <div class="row">
-    <div *ngFor="let skillSet of skillSets" class="col-sm-12 col-md-6 col-lg-4">
-      <div class="card mb-3 shadow-default">
-        <div class="card-body">
-          <img src="https://www.algolia.com/static_assets/images/svg/pillar-icon-saas-61345726.svg" alt="">
-          <h4 class="card-title text-center">{{ skillSet.name }}</h4>
-          <p class="card-text">bulk of the card's content.</p>
+    <div class="row">
+      <div *ngFor="let skillSet of skillSets" class="col-sm-12 col-md-6 col-lg-4">
+        <div class="card mb-3 shadow-default">
+          <div class="card-body">
+            <img src="https://www.algolia.com/static_assets/images/svg/pillar-icon-media-f21bfb37.svg" alt="">
+            <h4 class="card-title text-center">{{ skillSet.name }}</h4>
+            <p class="card-text">bulk of the card's content.</p>
+          </div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECENT -->
+  <div class="recent">
+    <h4 class="text-muted">Recent</h4>
+    <hr>
+
+    <div class="row">
+      <div *ngFor="let skillSet of skillSets" class="col-sm-12 col-md-6 col-lg-4">
+        <a href="#" class="link-unstyled" routerLink="{{ skillSet.permalink }}">
+          <div class="card mb-3 shadow-default">
+            <div class="card-body">
+              <img src="https://www.algolia.com/static_assets/images/svg/pillar-icon-saas-61345726.svg" alt="">
+              <h4 class="card-title text-center">{{ skillSet.name }}</h4>
+              <div class="tags">
+                <span *ngFor="let tag of skillSet?.tagged" href="#" class="text-muted">{{ tag?.tag_slug }} </span>
+              </div>
+            </div>
+          </div>
+        </a>
       </div>
     </div>
   </div>

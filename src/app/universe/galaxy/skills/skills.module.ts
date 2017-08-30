@@ -8,6 +8,8 @@ import {BrowserModule} from '@angular/platform-browser';
 import {CreateSkillSetComponent} from './create-skill-set/create-skill-set.component';
 import {ExploreComponent} from './explore/explore.component';
 import { LimitToPipe} from './_pipes/limit-to.pipe';
+import {NgxTypeaheadModule} from 'ngx-typeahead';
+import { ViewSkillSetComponent } from './view-skill-set/view-skill-set.component';
 
 export const skillsRoutes: Routes = [
   {
@@ -17,6 +19,7 @@ export const skillsRoutes: Routes = [
       {path: '', redirectTo: 'overview', pathMatch: 'full'},
       {path: 'overview', component: OverviewComponent},
       {path: 'explore', component: ExploreComponent},
+      {path: 'explore/:permalink', component: ViewSkillSetComponent},
       {path: 'create', component: CreateSkillSetComponent},
     ]
   },
@@ -30,6 +33,7 @@ export const skillsRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule,
     HttpModule,
+    NgxTypeaheadModule
   ],
   declarations: [
     SkillsComponent,
@@ -37,6 +41,7 @@ export const skillsRoutes: Routes = [
     CreateSkillSetComponent,
     ExploreComponent,
     LimitToPipe,
+    ViewSkillSetComponent,
   ]
 })
 export class SkillsModule {

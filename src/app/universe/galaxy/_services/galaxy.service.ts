@@ -19,28 +19,61 @@ export class GalaxyService {
     return this.http.get(AuthService.HOST + `api/galaxy/${permalink}`);
   }
 
+  /**
+   * @param permalink
+   * @return {Observable<Response>}
+   */
   get(permalink) {
     return this.http.get(AuthService.HOST + `api/galaxy/${permalink}`);
   }
 
+  /**
+   * @param galaxy
+   * @return {Observable<Response>}
+   */
   store(galaxy) {
     return this.http.post(AuthService.HOST + 'api/galaxy', galaxy);
   }
 
+  /**
+   * @param user
+   * @param permalink
+   * @return {Observable<Response>}
+   */
   sendInvite(user, permalink) {
     return this.http.post(AuthService.HOST + `api/galaxy/invite/${permalink}`, user);
   }
 
+  /**
+   * @param permalink
+   * @param token
+   * @return {Observable<Response>}
+   */
   accept(permalink, token) {
     return this.http.get(AuthService.HOST + `api/invite/accept/${permalink}/${token}`);
   }
 
+  /**
+   * @param skillSet
+   * @return {Observable<Response>}
+   */
   storeSkillSet(skillSet) {
     return this.http.post(AuthService.HOST + `api/galaxy/${this.getCurrentGalaxyPermalink()}/createSkillSet`, skillSet);
   }
 
+  /**
+   * @return {Observable<Response>}
+   */
   skillSets() {
     return this.http.get(AuthService.HOST + `api/galaxy/${this.getCurrentGalaxyPermalink()}/skillSets`);
+  }
+
+  /**
+   * @param permalink
+   * @return {Observable<Response>}
+   */
+  getSkillSet(permalink) {
+    return this.http.get(AuthService.HOST + `api/galaxy/${this.getCurrentGalaxyPermalink()}/skillSet/${permalink}`);
   }
 
   /**
@@ -53,7 +86,7 @@ export class GalaxyService {
   }
 
   /**
-   * Get the current galaxy from local storage
+   * Get the current galaxy permalink from local storage
    *
    * @return {string|null}
    */
@@ -61,6 +94,11 @@ export class GalaxyService {
     return localStorage.getItem('currentGalaxy');
   }
 
+  /**
+   * Get the current galaxy
+   *
+   * @return {Observable<Response>}
+   */
   currentGalaxy() {
     return this.http.get(AuthService.HOST + `api/galaxy/${this.getCurrentGalaxyPermalink()}`);
   }
