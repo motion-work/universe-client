@@ -103,6 +103,13 @@ a:hover {
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 
+.input-group-btn {
+  button {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+  }
+}
+
 /**
  ORIZENS/NGX-TYPEAHEAD
  */

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../../authentication/_services/auth.service';
-import {GalaxyService} from "../_services/galaxy.service";
+import {GalaxyService} from '../_services/galaxy.service';
 
 @Component({
   selector: 'app-head-up-display',

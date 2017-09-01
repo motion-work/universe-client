@@ -13,6 +13,7 @@ export class CreateSkillSetComponent implements OnInit {
 
   page = 1;
   formGroup: FormGroup;
+  skillsArrayIndex;
 
   constructor(private fb: FormBuilder,
               private galaxyService: GalaxyService,
@@ -25,7 +26,7 @@ export class CreateSkillSetComponent implements OnInit {
       description: ['', [Validators.required]],
       tags: this.fb.array([]),
       skills: this.fb.array([
-        this.initSetItems(),
+        this.initSetSkills(),
       ])
     });
   }
@@ -33,7 +34,7 @@ export class CreateSkillSetComponent implements OnInit {
   createSkillSet() {
     this.galaxyService.storeSkillSet(this.formGroup.value)
       .subscribe(response => {
-        this.router.navigate(['explore']);
+        // this.router.navigate(['explore']);
       });
   }
 
@@ -45,7 +46,16 @@ export class CreateSkillSetComponent implements OnInit {
     this.page--;
   }
 
-  initSetItems() {
+  initSetSkills() {
+    return this.fb.group({
+      title: ['', [Validators.required]],
+      subitems: this.fb.array([
+        this.initSubitems()
+      ])
+    });
+  }
+
+  initSubitems() {
     return this.fb.group({
       title: ['', [Validators.required]],
       description: ['', [Validators.required]],
@@ -56,7 +66,15 @@ export class CreateSkillSetComponent implements OnInit {
    * Add skill set item
    */
   addSkill() {
-    this.formArraySkills.push(this.initSetItems());
+    this.formArraySkills.push(this.initSetSkills());
+  }
+
+  addSubitem(i) {
+    this.formArraySubitems(i).push(this.initSubitems());
+  }
+
+  removeSubitem(chapterIndex: number, i: number) {
+    this.formArraySubitems(chapterIndex).removeAt(i);
   }
 
   addTag(name) {
@@ -75,11 +93,15 @@ export class CreateSkillSetComponent implements OnInit {
   }
 
   get formArrayTags() {
-    return <FormArray>this.formGroup.get('tags');
+    return this.formGroup.get('tags') as FormArray;
+  }
+
+  formArraySubitems(i: number) {
+    return (this.formGroup.get('skills') as FormArray).at(i).get('subitems') as FormArray;
   }
 
   get formArraySkills() {
-    return <FormArray>this.formGroup.get('skills');
+    return this.formGroup.get('skills') as FormArray;
   }
 
 }

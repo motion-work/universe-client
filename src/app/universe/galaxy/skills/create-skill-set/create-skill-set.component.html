@@ -19,7 +19,7 @@
 
           <div class="form-group">
             <label for="name">Skill Set Name</label>
-            <input type="text" id="name" class="form-control" formControlName="name">
+            <input type="text" id="name" class="form-control" formControlName="name" autofocus>
           </div>
           <div class="form-group">
             <label for="description">Description</label>
@@ -28,8 +28,9 @@
           </div>
           <div class="form-group">
             <label for="tags">Categories</label>
-            <input type="text" id="tags" class="form-control" (keyup.enter)="addTag(tagInput.value); tagInput.value = ''" #tagInput
-            placeholder="Informatik, Design, Leadership...">
+            <input type="text" id="tags" class="form-control"
+                   (keyup.enter)="addTag(tagInput.value); tagInput.value = ''" #tagInput
+                   placeholder="Informatik, Design, Leadership...">
 
             <div class="myTags">
               <button *ngFor="let tag of formArrayTags.controls; let i=index" type="button"
@@ -52,41 +53,72 @@
     <!--  PAGE 2 -->
     <div class="page" [class.d-none]="page != 2">
       <div formArrayName="skills">
-        <div *ngFor="let skill of formArraySkills.controls; let i=index">
-          <div [formGroupName]="i">
+        <div *ngFor="let skill of formArraySkills.controls; let chapterIndex=index">
+          <div [formGroupName]="chapterIndex">
             <div class="row justify-content-center animated fadeIn">
 
-              <div class="col-sm-12 col-md-5 col-lg-5">
-                <div class="form-group">
-                  <label for="competence-title">Competence</label>
-                  <input type="text" id="competence-title" class="form-control" formControlName="title">
+              <!-- CHAPTER -->
+              <div class="col-sm-12 col-md-5 col-lg-5 d-flex">
+                <div class="row">
+                  <div class="col-12 d-flex justify-content-center mb-2">
+                    <h4>Chapter {{ chapterIndex+1 }}</h4>
+                  </div>
+                  <div class="col-2">
+                    <button type="button" *ngIf="formArraySkills.controls.length > 1" class="btn btn-danger"
+                            (click)="removeSkill(chapterIndex)"><i class="fa fa-trash"></i>
+                    </button>
+                  </div>
+                  <div class="col-10">
+                    <div class="form-group text-center">
+                      <input type="text" id="chapter" class="form-control" formControlName="title">
+                    </div>
+                  </div>
                 </div>
               </div>
+              <!-- LESSONS -->
+              <div class="col-sm-12 col-md-6 col-lg-6">
+                <div formArrayName="subitems">
+                  <div class="row" *ngFor="let subitem of formArraySubitems(chapterIndex).controls; let index=index">
+                    <div class="col-11">
+                      <div [formGroupName]="index">
 
-              <div class="col-sm-12 col-md-5 col-lg-5">
-                <div class="form-group">
-                  <label for="competence-description">Description</label>
-                  <textarea type="text" id="competence-description" class="form-control" rows="5"
-                            formControlName="description"></textarea>
+                        <div class="form-group">
+                          <label for="subitem">{{ index+1 }}. Lesson</label>
+                          <input type="text" id="subitem" class="form-control" formControlName="title">
+                        </div>
+                        <div class="form-group">
+                          <label for="item-description">Description</label>
+                          <textarea type="text" id="item-description" class="form-control"
+                                    formControlName="description" rows="5"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-1 d-flex flex-column align-items-center justify-content-center">
+                      <button type="button" *ngIf="formArraySubitems(chapterIndex).controls.length > 1"
+                              (click)="removeSubitem(chapterIndex, index)"
+                              class="btn btn-danger mb-1">
+                        <i class="fa fa-trash"></i>
+                      </button>
+                      <button type="button" (click)="addSubitem(chapterIndex)" class="btn btn-primary">
+                        <i class="fa fa-plus"></i>
+                      </button>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div class="col-sm-12 col-md-1 col-lg-1 d-flex align-items-center justify-content-center">
-                <button type="button" *ngIf="formArraySkills.controls.length > 1" (click)="removeSkill(i)"
-                        class="btn btn-danger">
-                  <i class="fa fa-trash"></i>
-                </button>
               </div>
 
             </div> <!-- END row -->
-
           </div> <!-- END arrayItem -->
+
+          <hr> <!-- SEPARATOR -->
+
         </div> <!-- END ngFor -->
       </div> <!-- END arrayGroup -->
 
       <!-- ADD SKILL BUTTON -->
       <div class="row justify-content-center mt-2">
         <div class="col-2">
-          <button type="button" (click)="addSkill()" class="btn btn-primary"><i class="fa fa-plus"></i></button>
+          <button type="button" (click)="addSkill()" class="btn btn-primary">Add Chapter</button>
         </div>
       </div>
 
