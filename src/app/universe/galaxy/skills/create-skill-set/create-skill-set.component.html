@@ -28,10 +28,11 @@
           </div>
           <div class="form-group">
             <label for="tags">Categories</label>
-            <input type="text" id="tags" class="form-control"
-                   (keyup.enter)="addTag(tagInput.value); tagInput.value = ''" #tagInput
+            <input #searchInput type="text" id="tags" class="form-control" [value]="search" ngxTypeahead autocomplete="off"
+                   [taUrl]="url" [taParams]="params"
+                   (taSelected)="handleResultSelected($event, searchInput)"
+                   (keyup.enter)="addTag()"
                    placeholder="Informatik, Design, Leadership...">
-
             <div class="myTags">
               <button *ngFor="let tag of formArrayTags.controls; let i=index" type="button"
                       class="btn btn-primary btn-sm animated bounceIn item"
@@ -61,7 +62,7 @@
               <div class="col-sm-12 col-md-5 col-lg-5 d-flex">
                 <div class="row">
                   <div class="col-12 d-flex justify-content-center mb-2">
-                    <h4>Chapter {{ chapterIndex+1 }}</h4>
+                    <h4><strong>Chapter {{ chapterIndex+1 }}</strong></h4>
                   </div>
                   <div class="col-2">
                     <button type="button" *ngIf="formArraySkills.controls.length > 1" class="btn btn-danger"

@@ -10,10 +10,16 @@ import {Router} from '@angular/router';
 })
 export class CreateSkillSetComponent implements OnInit {
 
-
+  url = 'http://suggestqueries.google.com/complete/search';
+  params = {
+    hl: 'en',
+    ds: 'yt',
+    xhr: 't',
+    client: 'youtube',
+  };
+  search = '';
   page = 1;
   formGroup: FormGroup;
-  skillsArrayIndex;
 
   constructor(private fb: FormBuilder,
               private galaxyService: GalaxyService,
@@ -31,10 +37,14 @@ export class CreateSkillSetComponent implements OnInit {
     });
   }
 
+  handleResultSelected(result, searchInput) {
+    this.search = result;
+  }
+
   createSkillSet() {
     this.galaxyService.storeSkillSet(this.formGroup.value)
       .subscribe(response => {
-        // this.router.navigate(['explore']);
+        this.router.navigate(['explore']);
       });
   }
 
@@ -77,8 +87,11 @@ export class CreateSkillSetComponent implements OnInit {
     this.formArraySubitems(chapterIndex).removeAt(i);
   }
 
-  addTag(name) {
-    this.formArrayTags.push(new FormControl(name, Validators.required));
+  addTag() {
+    if (this.search !== '') {
+      this.formArrayTags.push(new FormControl(this.search, Validators.required));
+      this.search = '';
+    }
   }
 
   removeTag(i: number) {

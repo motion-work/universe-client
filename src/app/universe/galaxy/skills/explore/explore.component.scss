@@ -26,10 +26,18 @@ $border-radius: 6px;
   border-radius: 1rem;
 }
 
+.cover-image {
+  filter: blur(1px);
+}
+
+.gradient {
+  background: linear-gradient(to bottom right, rgba(255, 0, 0, 0), rgba(0, 137, 255, 0.71)); /* Standard syntax (must be last) */
+}
+
 .card {
   border: none;
   border-radius: $border-radius;
-  min-height: 270px;
+  //min-height: 236px;
 }
 
 .card-body {

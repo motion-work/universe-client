@@ -32,17 +32,12 @@
     <hr>
 
     <div class="row">
-      <div *ngFor="let skillSet of skillSets" class="col-sm-12 col-md-6 col-lg-4">
+      <div *ngFor="let skillSet of skillSets" class="col-sm-12 col-md-6 col-lg-4 mb-4">
         <a href="#" class="link-unstyled" routerLink="{{ skillSet.permalink }}">
-          <div class="card mb-3 shadow-default">
-            <div class="card-body">
-              <i class="fa fa-graduation-cap fa-5x mb-3"></i>
-              <!--<img src="https://source.unsplash.com/random">-->
-              <img src="https://www.algolia.com/static_assets/images/svg/pillar-icon-saas-61345726.svg" alt="">
-              <h4 class="card-title text-center">{{ skillSet.name }}</h4>
-              <div class="tags">
-                <span *ngFor="let tag of skillSet?.tagged" href="#" class="text-muted">{{ tag?.tag_slug }} </span>
-              </div>
+          <div class="card bg-dark text-white">
+            <img class="card-img cover-image" src="https://s3.eu-central-1.amazonaws.com/rocketstart-universe/public/{{ skillSet.cover_image }}" alt="">
+            <div class="card-img-overlay gradient d-flex justify-content-center align-items-center">
+              <h3 class="card-title">{{ skillSet.name }}</h3>
             </div>
           </div>
         </a>
