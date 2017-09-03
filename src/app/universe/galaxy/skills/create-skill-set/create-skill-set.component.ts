@@ -37,7 +37,7 @@ export class CreateSkillSetComponent implements OnInit {
     });
   }
 
-  handleResultSelected(result, searchInput) {
+  handleResultSelected(result) {
     this.search = result;
   }
 
@@ -68,7 +68,7 @@ export class CreateSkillSetComponent implements OnInit {
   initSubitems() {
     return this.fb.group({
       title: ['', [Validators.required]],
-      description: ['', [Validators.required]],
+      description: [''],
     });
   }
 

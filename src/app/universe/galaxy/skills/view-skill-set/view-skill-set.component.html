@@ -15,7 +15,11 @@
           </div>
 
           <div id="{{ skillItem?.id }}" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
-            <div class="card-body">{{ skillItem?.description }}</div>
+            <div class="card-body">
+              <ul class="list-group">
+                <li class="list-group-item" *ngFor="let lesson of skillItem?.skill_set_subitems; let i=index">{{ i+1}}. {{ lesson.title }}</li>
+              </ul>
+            </div>
           </div>
         </div>
 

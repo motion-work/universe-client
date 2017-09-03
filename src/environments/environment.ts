@@ -7,6 +7,6 @@ export const environment = {
   production: false,
   grant_type: 'password',
   client_id: 2,
-  client_secret: '3xVfSsZ0TuZldgCHcBcE0ipaau4kh4tDgKyHVcuq',
+  client_secret: 'w0HZL8msaaRqdhQORFUSNAMNYjwluhrFcfx1K88R',
   api_host: 'http://universe.dev/',
 };

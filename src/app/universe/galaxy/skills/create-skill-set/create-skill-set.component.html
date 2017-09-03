@@ -28,9 +28,9 @@
           </div>
           <div class="form-group">
             <label for="tags">Categories</label>
-            <input #searchInput type="text" id="tags" class="form-control" [value]="search" ngxTypeahead autocomplete="off"
+            <input type="text" id="tags" class="form-control" [value]="search" ngxTypeahead autocomplete="off"
                    [taUrl]="url" [taParams]="params"
-                   (taSelected)="handleResultSelected($event, searchInput)"
+                   (taSelected)="handleResultSelected($event)"
                    (keyup.enter)="addTag()"
                    placeholder="Informatik, Design, Leadership...">
             <div class="myTags">

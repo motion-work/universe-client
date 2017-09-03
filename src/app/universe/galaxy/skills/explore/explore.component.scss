@@ -1,5 +1,10 @@
 $border-radius: 6px;
 
+.jumbotron {
+  background: #fff url(/assets/img/discovery-banner.png) no-repeat center;
+  background-size: cover;
+}
+
 .search {
   font-size: 1.7em;
 }
@@ -26,8 +31,10 @@ $border-radius: 6px;
   border-radius: 1rem;
 }
 
+
+
 .cover-image {
-  filter: blur(1px);
+  filter: blur(2px);
 }
 
 .gradient {
@@ -38,6 +45,14 @@ $border-radius: 6px;
   border: none;
   border-radius: $border-radius;
   //min-height: 236px;
+}
+
+.card-img {
+  border-radius: $border-radius;
+}
+
+.card-img-overlay {
+  border-radius: $border-radius;
 }
 
 .card-body {
