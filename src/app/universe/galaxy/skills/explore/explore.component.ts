@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {GalaxyService} from '../../_services/galaxy.service';
+import {Http} from "@angular/http";
 
 @Component({
   selector: 'app-explore',
@@ -14,10 +15,9 @@ export class ExploreComponent implements OnInit {
   constructor(private galaxyService: GalaxyService) {
   }
 
-  ngOnInit() {
-    this.galaxyService.skillSets().subscribe(response => {
-      this.skillSets = response.json();
-    });
+  async ngOnInit() {
+
+    this.skillSets = await this.galaxyService.skillSets().map(it => it.json()).toPromise();
   }
 
   search() {

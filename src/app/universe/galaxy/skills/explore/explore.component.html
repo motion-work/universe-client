@@ -1,7 +1,7 @@
-<div class="jumbotron jumbotron-fluid">
-  <div class="container text-center">
-    <h1 class="display-3"><i class="fa fa-compass"></i> Discovery</h1>
-    <p class="lead">Explore the best skill sets from masters all over the world</p>
+<div class="banner text-center">
+  <div class="title">
+    <h1 class="animated bounceIn display-3"><i class="fa fa-compass"></i> Explore</h1>
+    <h5>Discover unique skills sets from masters all over the world</h5>
   </div>
 </div>
 
@@ -20,7 +20,7 @@
     <hr>
 
     <div class="row">
-      <div *ngFor="let skillSet of skillSets" class="col-sm-12 col-md-6 col-lg-4">
+      <div *ngFor="let skillSet of skillSets" class="col-sm-12 col-md-6 col-lg-4 animated slideInRight">
         <div class="card mb-3 shadow-default">
           <div class="card-body">
             <img src="https://www.algolia.com/static_assets/images/svg/pillar-icon-media-f21bfb37.svg" alt="">
@@ -41,11 +41,15 @@
       <div *ngFor="let skillSet of skillSets" class="col-sm-12 col-md-6 col-lg-4 mb-4">
         <a href="#" class="link-unstyled" routerLink="{{ skillSet.permalink }}">
           <div class="card bg-dark text-white">
-            <img class="card-img cover-image"
+            <img class="card-img cover-image shadow-default"
                  src="https://s3.eu-central-1.amazonaws.com/rocketstart-universe/public/{{ skillSet.cover_image }}"
                  alt="">
-            <div class="card-img-overlay gradient d-flex justify-content-center align-items-center">
+            <div class="card-img-overlay gradient d-flex flex-column justify-content-around">
               <h3 class="card-title">{{ skillSet.name }}</h3>
+              <div class="author">
+                <div class="avatar"><img src="{{ skillSet.user.profile_image }}" alt="" class="img-circle"></div>
+                <div class="name"><span>{{ skillSet.user.fullName }}</span></div>
+              </div>
             </div>
           </div>
         </a>

@@ -1,12 +1,17 @@
 $border-radius: 6px;
 
-.jumbotron {
-  background: #fff url(/assets/img/discovery-banner.png) no-repeat center;
-  background-size: cover;
+.banner {
+  margin-bottom: 3rem;
+
+  .title {
+    position: relative;
+    z-index: 2;
+  }
 }
 
 .search {
-  font-size: 1.7em;
+  border-radius: 2rem;
+  font-size: 1.4em;
 }
 
 .search-results {
@@ -31,8 +36,6 @@ $border-radius: 6px;
   border-radius: 1rem;
 }
 
-
-
 .cover-image {
   filter: blur(2px);
 }
@@ -41,10 +44,13 @@ $border-radius: 6px;
   background: linear-gradient(to bottom right, rgba(255, 0, 0, 0), rgba(0, 137, 255, 0.71)); /* Standard syntax (must be last) */
 }
 
+.img-thumbnail {
+  padding: .05rem;
+}
+
 .card {
   border: none;
   border-radius: $border-radius;
-  //min-height: 236px;
 }
 
 .card-img {
@@ -60,4 +66,18 @@ $border-radius: 6px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+
+  img {
+    border: 2px solid #fff;
+    height: 40px;
+  }
+
+  .name {
+    padding-left: 10px;
+  }
 }

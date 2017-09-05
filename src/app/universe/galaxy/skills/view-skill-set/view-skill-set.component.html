@@ -1,23 +1,61 @@
-<div class="container">
-  <h1 class="text-center mb-5">{{ skillSet?.name }}</h1>
-  <p class="mb-5 text-muted">{{ skillSet?.description }}</p>
+<div class="banner text-center">
+  <h2 class="title">{{ skillSet?.name }}</h2>
+  <img src="/assets/img/explore-banner.svg" alt="">
+</div>
 
-  <div class="row justify-content-center">
-    <div class="col-lg-6">
-      <div id="accordion" role="tablist">
-        <div class="card" *ngFor="let skillItem of skillSet?.skill_set_items">
-          <div class="card-header" role="tab" id="headingOne">
-            <h5 class="mb-0">
-              <a data-toggle="collapse" href="#{{ skillItem.id }}" aria-expanded="true">
-                {{ skillItem?.title }}
-              </a>
-            </h5>
+
+<div class="container-fluid skill-set-content">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-sm-12 col-md-4 d-flex justify-content-center justify-content-md-end align-items-center mb-1">
+        <img class="img-circle avatar" src="{{ skillSet?.user.profile_image }}">
+      </div>
+      <div class="col-sm-12 col-md-3 d-flex justify-content-center justify-content-md-start align-items-center">
+        <span>{{ skillSet?.user.fullName }}</span>
+      </div>
+      <div class="col-sm-12 col-md-4 d-flex justify-content-center justify-content-md-end align-items-center m-2">
+        <button class="btn btn-outline-success btn-sm" type="button"><i class="fa fa-plus"></i> Save to My Skills
+        </button>
+      </div>
+
+      <div class="col-12"><p>{{ skillSet?.description }}</p></div>
+
+      <div class="col-12">
+        <div class="tags mb-4">
+          <a class="btn btn-primary btn-sm item" *ngFor="let tag of skillSet?.tagged">{{ tag.tag_name }}</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-bar row text-center mb-5">
+      <div class="col-3 item">{{ skillSet?.skill_set_items.length }} Chapters</div>
+      <div class="col-3 item">1,324,400 Astronauts</div>
+      <div class="col-3 item"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+        class="fa fa-star"></i><i class="fa fa-star-o"></i></div>
+      <div class="col-3 item">Last update: {{ skillSet?.updated_at | date }}</div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12">
+
+        <div class="wrapper animated slideInUp" *ngFor="let chapter of skillSet?.skill_set_items; let i=index">
+          <div class="background first">
+            <div class="chapter"><span class="hidden-xs">Chapter</span> {{ i+1 }}</div>
           </div>
+          <div class="background second">
+            <div class="timeline"></div>
+            <div class="timeline-bubble"></div>
+          </div>
+          <div class="background third">
+            <div class="inner-bubble">
+              <h4 class="text-center">{{ chapter.title }}</h4>
 
-          <div id="{{ skillItem?.id }}" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
-            <div class="card-body">
               <ul class="list-group">
-                <li class="list-group-item" *ngFor="let lesson of skillItem?.skill_set_subitems; let i=index">{{ i+1}}. {{ lesson.title }}</li>
+                <li class="list-group-item" *ngFor="let lesson of chapter?.skill_set_subitems">
+                  <p style="color: #000">{{ lesson.title }}</p>
+                  <p>{{ lesson.description }}</p>
+                </li>
               </ul>
             </div>
           </div>
@@ -26,5 +64,6 @@
 
       </div>
     </div>
+
   </div>
 </div>

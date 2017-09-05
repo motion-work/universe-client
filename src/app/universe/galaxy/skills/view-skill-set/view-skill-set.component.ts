@@ -10,6 +10,7 @@ import {GalaxyService} from '../../_services/galaxy.service';
 export class ViewSkillSetComponent implements OnInit {
 
   skillSet: any;
+  skillSetSubitems = [];
 
   constructor(private route: ActivatedRoute, private galaxyService: GalaxyService) {
   }
