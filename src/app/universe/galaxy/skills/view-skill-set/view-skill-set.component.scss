@@ -1,5 +1,10 @@
 .banner {
   margin-bottom: -2px;
+  .call-to-action-btn {
+    z-index: 1;
+    position: relative;
+    margin-top: 5rem;
+  }
 
   .title {
     position: relative;
