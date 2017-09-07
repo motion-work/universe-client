@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
-import {GalaxyService} from '../../_services/galaxy.service';
-import {UserService} from "../../_services/user.service";
+import {UserService} from '../../_services/user.service';
+import {SkillSetService} from '../../_services/skill-set.service';
 
 @Component({
   selector: 'app-view-skill-set',
@@ -14,20 +14,26 @@ export class ViewSkillSetComponent implements OnInit {
   skillSetSubitems = [];
 
   constructor(private route: ActivatedRoute,
-              private galaxyService: GalaxyService,
+              private skillSetService: SkillSetService,
               private userService: UserService) {
   }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
-      this.galaxyService.getSkillSet(params['permalink']).subscribe(data => {
-        this.skillSet = data.json();
+      this.skillSetService.getSkillSet(params['permalink']).subscribe(response => {
+        this.skillSet = response.json().data;
       });
     });
   }
 
   subscribe(id: number) {
     this.userService.subscribe(id).subscribe(data => {
+      console.log(data);
+    });
+  }
+
+  unsubscribe(id: number) {
+    this.userService.unsubscribe(id).subscribe(data => {
       console.log(data);
     });
   }

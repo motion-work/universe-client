@@ -16,8 +16,8 @@ export const skillsRoutes: Routes = [
     path: 'skills',
     component: SkillsComponent,
     children: [
-      {path: '', redirectTo: 'overview', pathMatch: 'full'},
-      {path: 'overview', component: OverviewComponent},
+      {path: '', redirectTo: 'my-skills', pathMatch: 'full'},
+      {path: 'my-skills', component: OverviewComponent},
       {path: 'explore', component: ExploreComponent},
       {path: 'explore/:permalink', component: ViewSkillSetComponent},
       {path: 'create', component: CreateSkillSetComponent},

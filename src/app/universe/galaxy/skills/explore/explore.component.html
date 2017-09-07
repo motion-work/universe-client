@@ -4,7 +4,6 @@
     <h5>Discover unique skills sets from masters all over the world</h5>
   </div>
 </div>
-
 <div class="container">
 
   <div class="row justify-content-center mb-5">
@@ -20,14 +19,24 @@
     <hr>
 
     <div class="row">
-      <div *ngFor="let skillSet of skillSets" class="col-sm-12 col-md-6 col-lg-4 animated slideInRight">
-        <div class="card mb-3 shadow-default">
-          <div class="card-body">
-            <img src="https://www.algolia.com/static_assets/images/svg/pillar-icon-media-f21bfb37.svg" alt="">
-            <h4 class="card-title text-center">{{ skillSet.name }}</h4>
-            <p class="card-text">bulk of the card's content.</p>
+
+      <div class="col-12 mb-4"><i *ngIf="searchResults.length == 0" class="text-muted">Nothing found</i></div>
+
+      <div *ngFor="let skillSet of searchResults" class="col-sm-12 col-md-6 col-lg-4 mb-4">
+        <a href="#" class="link-unstyled" routerLink="{{ skillSet.permalink }}">
+          <div class="card bg-dark text-white">
+            <!--<img class="card-img cover-image shadow-default"-->
+            <!--src="https://s3.eu-central-1.amazonaws.com/rocketstart-universe/public/{{ skillSet.cover_image }}"-->
+            <!--alt="">-->
+            <div class="card-img-overlay gradient d-flex flex-column justify-content-around">
+              <h3 class="card-title">{{ skillSet.name }}</h3>
+              <!--<div class="author">-->
+                <!--<div class="avatar"><img src="{{ skillSet.author.profile_image }}" alt="" class="img-circle"></div>-->
+                <!--<div class="name"><span>{{ skillSet.author.fullName }}</span></div>-->
+              <!--</div>-->
+            </div>
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </div>
@@ -41,9 +50,9 @@
       <div *ngFor="let skillSet of skillSets" class="col-sm-12 col-md-6 col-lg-4 mb-4">
         <a href="#" class="link-unstyled" routerLink="{{ skillSet.permalink }}">
           <div class="card bg-dark text-white">
-            <img class="card-img cover-image shadow-default"
-                 src="https://s3.eu-central-1.amazonaws.com/rocketstart-universe/public/{{ skillSet.cover_image }}"
-                 alt="">
+            <!--<img class="card-img cover-image shadow-default"-->
+                 <!--src="https://s3.eu-central-1.amazonaws.com/rocketstart-universe/public/{{ skillSet.cover_image }}"-->
+                 <!--alt="">-->
             <div class="card-img-overlay gradient d-flex flex-column justify-content-around">
               <h3 class="card-title">{{ skillSet.name }}</h3>
               <div class="author">

@@ -16,6 +16,8 @@ import {HeadUpDisplayComponent} from './head-up-display/head-up-display.componen
 import {FreshLoginGuard} from './_services/fresh-login.guard';
 import {SkillsModule, skillsRoutes} from './skills/skills.module';
 import {UserService} from './_services/user.service';
+import {SkillSetService} from './_services/skill-set.service';
+import {SearchService} from './_services/search.service';
 
 export const galaxyRoutes: Routes = [
   {path: 'get-started', component: GetStartedComponent, canActivate: [FreshLoginGuard]},
@@ -55,6 +57,8 @@ export const galaxyRoutes: Routes = [
   providers: [
     GalaxyService,
     UserService,
+    SkillSetService,
+    SearchService,
     GalaxyExistenceGuard,
     FreshLoginGuard,
   ]

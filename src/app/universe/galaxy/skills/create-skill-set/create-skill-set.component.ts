@@ -24,6 +24,7 @@ export class CreateSkillSetComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private galaxyService: GalaxyService,
               private router: Router) {
+
   }
 
   ngOnInit() {

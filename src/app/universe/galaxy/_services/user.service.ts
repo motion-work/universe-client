@@ -11,4 +11,13 @@ export class UserService {
   subscribe(id: number) {
     return this.http.post(AuthService.HOST + `api/user/skillSet/${id}/subscribe`, id);
   }
+
+  unsubscribe(id: number) {
+    return this.http.post(AuthService.HOST + `api/user/skillSet/${id}/unsubscribe`, id);
+  }
+
+  mySkills() {
+    return this.http.get(AuthService.HOST + 'api/user/my-skills');
+  }
+
 }

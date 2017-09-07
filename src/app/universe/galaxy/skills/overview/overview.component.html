@@ -1,10 +1,12 @@
 <div class="container">
-  <h1>Overview</h1>
+  <h1>My Skills</h1>
+
+  <h4>Subscriptions</h4>
 
   <div class="row">
-    <div *ngFor="let skillSet of skillSets" class="col">
+    <div *ngFor="let skill of mySkills" class="col">
       <div class="box">
-        <h4>{{ skillSet.name }}</h4>
+        <h4>{{ skill.name }}</h4>
       </div>
     </div>
   </div>

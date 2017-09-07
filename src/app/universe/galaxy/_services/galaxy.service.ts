@@ -62,21 +62,6 @@ export class GalaxyService {
   }
 
   /**
-   * @return {Observable<Response>}
-   */
-  skillSets() {
-    return this.http.get(AuthService.HOST + `api/galaxy/${this.getCurrentGalaxyPermalink()}/skillSets`);
-  }
-
-  /**
-   * @param permalink
-   * @return {Observable<Response>}
-   */
-  getSkillSet(permalink) {
-    return this.http.get(AuthService.HOST + `api/galaxy/${this.getCurrentGalaxyPermalink()}/skillSet/${permalink}`);
-  }
-
-  /**
    * Set the current galaxy to local storage
    *
    * @param permalink

@@ -1,6 +1,6 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {GalaxyService} from '../../_services/galaxy.service';
-import {Http} from "@angular/http";
+import {Component, OnInit} from '@angular/core';
+import {SkillSetService} from '../../_services/skill-set.service';
+import {SearchService} from '../../_services/search.service';
 
 @Component({
   selector: 'app-explore',
@@ -10,18 +10,23 @@ import {Http} from "@angular/http";
 export class ExploreComponent implements OnInit {
 
   skillSets = [];
+  searchResults = [];
   query = '';
 
-  constructor(private galaxyService: GalaxyService) {
+  constructor(private skillSetService: SkillSetService, private searchService: SearchService) {
   }
 
   async ngOnInit() {
 
-    this.skillSets = await this.galaxyService.skillSets().map(it => it.json()).toPromise();
+    this.skillSets = await this.skillSetService.skillSets().map(it => it.json()).toPromise();
   }
 
-  search() {
-    console.log(this.query);
+  async search() {
+    if (this.query !== '') {
+      this.searchResults = await this.searchService.skillSets(this.query).map(res => res.json()).toPromise();
+    }
+
+    console.log(this.searchResults);
   }
 
 }

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {GalaxyService} from '../../_services/galaxy.service';
+import {UserService} from '../../_services/user.service';
 
 @Component({
   selector: 'app-overview',
@@ -8,14 +8,14 @@ import {GalaxyService} from '../../_services/galaxy.service';
 })
 export class OverviewComponent implements OnInit {
 
-  skillSets = [];
+  mySkills = [];
 
-  constructor(private galaxyService: GalaxyService) {
+  constructor(private userService: UserService) {
   }
 
   ngOnInit() {
-    this.galaxyService.skillSets().subscribe(response => {
-      this.skillSets = response.json();
+    this.userService.mySkills().subscribe(response => {
+      this.mySkills = response.json();
     });
   }
 

@@ -32,7 +32,7 @@
                    [taUrl]="url" [taParams]="params"
                    (taSelected)="handleResultSelected($event)"
                    (keyup.enter)="addTag()"
-                   placeholder="Informatik, Design, Leadership...">
+                   placeholder="Software, Design, Leadership, Finance...">
             <div class="myTags">
               <button *ngFor="let tag of formArrayTags.controls; let i=index" type="button"
                       class="btn btn-primary btn-sm animated bounceIn item"

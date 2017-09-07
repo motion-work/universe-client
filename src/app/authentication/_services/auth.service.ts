@@ -71,5 +71,4 @@ export class AuthService {
     return this.authHttp.get(AuthService.HOST + 'api/me/galaxies');
   }
 
-
 }
