@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
 })
 export class CreateSkillSetComponent implements OnInit {
 
-  url = 'http://suggestqueries.google.com/complete/search';
+  url = 'https://suggestqueries.google.com/complete/search';
   params = {
     hl: 'en',
     ds: 'yt',
