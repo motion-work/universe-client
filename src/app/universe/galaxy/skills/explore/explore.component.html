@@ -1,6 +1,6 @@
 <div class="banner text-center">
   <div class="title">
-    <h1 class="animated bounceIn display-3"><i class="fa fa-compass"></i> Explore</h1>
+    <h1 class="display-3"><i class="fa fa-compass"></i> Explore</h1>
     <h5>Discover unique skills sets from masters all over the world</h5>
   </div>
 </div>
@@ -8,21 +8,27 @@
 
   <div class="row justify-content-center mb-5">
     <div class="col-sm-12 col-md-12 col-lg-8">
-      <input type="text" class="form-control search" placeholder="Search skills" autocomplete="off" (keyup)="search()"
-             [(ngModel)]="query">
+      <input #searchBox id="search-box" (keyup)="search(searchBox.value)"
+             class="form-control search" placeholder="Search skills" autocomplete="off">
+      <div class="sk-three-bounce" *ngIf="searching">
+        <div class="sk-child sk-bounce1"></div>
+        <div class="sk-child sk-bounce2"></div>
+        <div class="sk-child sk-bounce3"></div>
+      </div>
     </div>
   </div>
 
   <!-- SEARCH -->
-  <div class="search-results" *ngIf="query.length > 1">
-    <h4 class="text-muted">Search Results for "{{ query }}"</h4>
+  <div class="search-results" *ngIf="searchResults?.length > 0">
+    <h4 class="text-muted">Search Results for "{{ searchBox.value }}"</h4>
     <hr>
 
     <div class="row">
 
-      <div class="col-12 mb-4"><i *ngIf="searchResults.length == 0" class="text-muted">Nothing found</i></div>
+      <div *ngIf="searchResults?.length == 0" class="col-12 mb-4 animated fadeIn"><i class="text-muted">Nothing found</i>
+      </div>
 
-      <div *ngFor="let skillSet of searchResults" class="col-sm-12 col-md-6 col-lg-4 mb-4">
+      <div *ngFor="let skillSet of searchResults" class="col-sm-12 col-md-6 col-lg-4 mb-4 animated fadeIn">
         <a href="#" class="link-unstyled" routerLink="{{ skillSet.permalink }}">
           <div class="card bg-dark text-white">
             <!--<img class="card-img cover-image shadow-default"-->
@@ -31,8 +37,8 @@
             <div class="card-img-overlay gradient d-flex flex-column justify-content-around">
               <h3 class="card-title">{{ skillSet.name }}</h3>
               <!--<div class="author">-->
-                <!--<div class="avatar"><img src="{{ skillSet.author.profile_image }}" alt="" class="img-circle"></div>-->
-                <!--<div class="name"><span>{{ skillSet.author.fullName }}</span></div>-->
+              <!--<div class="avatar"><img src="{{ skillSet.author.profile_image }}" alt="" class="img-circle"></div>-->
+              <!--<div class="name"><span>{{ skillSet.author.fullName }}</span></div>-->
               <!--</div>-->
             </div>
           </div>
@@ -51,8 +57,8 @@
         <a href="#" class="link-unstyled" routerLink="{{ skillSet.permalink }}">
           <div class="card bg-dark text-white">
             <!--<img class="card-img cover-image shadow-default"-->
-                 <!--src="https://s3.eu-central-1.amazonaws.com/rocketstart-universe/public/{{ skillSet.cover_image }}"-->
-                 <!--alt="">-->
+            <!--src="https://s3.eu-central-1.amazonaws.com/rocketstart-universe/public/{{ skillSet.cover_image }}"-->
+            <!--alt="">-->
             <div class="card-img-overlay gradient d-flex flex-column justify-content-around">
               <h3 class="card-title">{{ skillSet.name }}</h3>
               <div class="author">

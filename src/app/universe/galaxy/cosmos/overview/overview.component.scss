@@ -1,4 +1,14 @@
-#overview {
-  margin-bottom: 100px;
-}
+.jumbotron {
+  color: #fff;
+  height: 365px;
+  background-image: url(/assets/img/cosmos-banner.svg);
+  background-position: center;
+  background-size: cover;
 
+
+  @media (max-width: 650px) {
+    background-image: url(/assets/img/cosmos-banner-small.svg);
+    background-position-y: bottom;
+    background-position-x: left;
+  }
+}

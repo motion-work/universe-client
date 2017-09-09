@@ -18,6 +18,7 @@ import {SkillsModule, skillsRoutes} from './skills/skills.module';
 import {UserService} from './_services/user.service';
 import {SkillSetService} from './_services/skill-set.service';
 import {SearchService} from './_services/search.service';
+import {SwitchGalaxyComponent} from './switch-galaxy/switch-galaxy.component';
 
 export const galaxyRoutes: Routes = [
   {path: 'get-started', component: GetStartedComponent, canActivate: [FreshLoginGuard]},
@@ -52,7 +53,8 @@ export const galaxyRoutes: Routes = [
     AcceptInviteComponent,
     GetStartedComponent,
     NavigationComponent,
-    HeadUpDisplayComponent
+    HeadUpDisplayComponent,
+    SwitchGalaxyComponent
   ],
   providers: [
     GalaxyService,
