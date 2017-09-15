@@ -133,3 +133,15 @@ a:hover {
     border: none;
   }
 }
+
+/**
+ GRADIENTS
+ */
+
+.gradient-default {
+  background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);
+}
+
+.gradient-red {
+  background-image: linear-gradient(to top, #f9748f 0%, #ffb199 100%);
+}

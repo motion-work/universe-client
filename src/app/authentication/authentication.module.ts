@@ -10,6 +10,7 @@ import {FormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import {NotLoggedInGuard} from './_services/not-logged-in.guard';
 import { RegisterComponent } from './register/register.component';
+import {SharedModule} from '../shared/shared.module';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig(), http, options);
@@ -32,6 +33,7 @@ const authenticationRoutes: Routes = [
     BrowserModule,
     HttpModule,
     FormsModule,
+    SharedModule,
     RouterModule.forChild(authenticationRoutes)
   ],
   declarations: [LoginComponent, LogoutComponent, AuthenticationComponent, RegisterComponent],

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {AuthHttp} from 'angular2-jwt';
-import {AuthService} from '../../../authentication/_services/auth.service';
+import {AuthService} from '../../authentication/_services/auth.service';
 
 @Injectable()
 export class UserService {
@@ -16,8 +16,12 @@ export class UserService {
     return this.http.post(AuthService.HOST + `api/user/skillSet/${id}/unsubscribe`, id);
   }
 
-  mySkills() {
-    return this.http.get(AuthService.HOST + 'api/user/my-skills');
+  subscribedSkillSets() {
+    return this.http.get(AuthService.HOST + 'api/user/subscribedSkillSets');
+  }
+
+  createdSkillSets() {
+    return this.http.get(AuthService.HOST + 'api/user/createdSkillSets');
   }
 
 }

@@ -5,20 +5,17 @@ import {CreateGalaxyComponent} from './create-galaxy/create-galaxy.component';
 import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
-import {GalaxyService} from './_services/galaxy.service';
 import {InviteComponent} from './invite/invite.component';
 import {AcceptInviteComponent} from './accept-invite/accept-invite.component';
 import {CosmosModule, cosmosRoutes} from './cosmos/cosmos.module';
 import {GetStartedComponent} from './get-started/get-started.component';
-import {GalaxyExistenceGuard} from './_services/galaxy-existence.guard';
+import {GalaxyExistenceGuard} from '../../shared/_services/galaxy-existence.guard';
 import {NavigationComponent} from './navigation/navigation.component';
 import {HeadUpDisplayComponent} from './head-up-display/head-up-display.component';
 import {FreshLoginGuard} from './_services/fresh-login.guard';
 import {SkillsModule, skillsRoutes} from './skills/skills.module';
-import {UserService} from './_services/user.service';
-import {SkillSetService} from './_services/skill-set.service';
-import {SearchService} from './_services/search.service';
 import {SwitchGalaxyComponent} from './switch-galaxy/switch-galaxy.component';
+import {SharedModule} from '../../shared/shared.module';
 
 export const galaxyRoutes: Routes = [
   {path: 'get-started', component: GetStartedComponent, canActivate: [FreshLoginGuard]},
@@ -45,6 +42,7 @@ export const galaxyRoutes: Routes = [
     HttpModule,
     CosmosModule,
     SkillsModule,
+    SharedModule
   ],
   declarations: [
     GalaxyComponent,
@@ -57,10 +55,6 @@ export const galaxyRoutes: Routes = [
     SwitchGalaxyComponent
   ],
   providers: [
-    GalaxyService,
-    UserService,
-    SkillSetService,
-    SearchService,
     GalaxyExistenceGuard,
     FreshLoginGuard,
   ]

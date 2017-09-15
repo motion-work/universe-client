@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
-import {GalaxyService} from '../_services/galaxy.service';
+import {GalaxyService} from '../../../shared/_services/galaxy.service';
 import {AuthService} from '../../../authentication/_services/auth.service';
 
 @Component({

@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {GalaxyService} from '../_services/galaxy.service';
 
 @Component({
   selector: 'app-navigation',
@@ -8,13 +7,10 @@ import {GalaxyService} from '../_services/galaxy.service';
 })
 export class NavigationComponent implements OnInit {
 
-  galaxy;
-
-  constructor(private galaxyService: GalaxyService) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.galaxyService.currentGalaxy().subscribe(data => this.galaxy = data.json());
   }
 
 }

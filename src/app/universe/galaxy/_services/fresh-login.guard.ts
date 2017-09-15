@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
-import {GalaxyService} from './galaxy.service';
+import {GalaxyService} from '../../../shared/_services/galaxy.service';
 
 @Injectable()
 export class FreshLoginGuard implements CanActivate {

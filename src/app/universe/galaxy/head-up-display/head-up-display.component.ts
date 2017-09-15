@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../../authentication/_services/auth.service';
-import {GalaxyService} from '../_services/galaxy.service';
+import {GalaxyService} from '../../../shared/_services/galaxy.service';
+import {Galaxy} from '../../../shared/_models/galaxy.model';
+import {User} from '../../../shared/_models/user.model';
 
 @Component({
   selector: 'app-head-up-display',
@@ -17,8 +19,8 @@ export class HeadUpDisplayComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.authService.me().subscribe(data => this.me = data.json());
-    this.galaxyService.currentGalaxy().subscribe(data => this.galaxy = data.json());
+    this.authService.me().subscribe((data: User) => this.me = data);
+    this.galaxyService.currentGalaxy().subscribe((data: Galaxy) => this.galaxy = data);
   }
 
 }

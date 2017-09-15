@@ -1,7 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
-import {UserService} from '../../_services/user.service';
-import {SkillSetService} from '../../_services/skill-set.service';
+import {UserService} from '../../../../shared/_services/user.service';
+import {SkillSetService} from '../../../../shared/_services/skill-set.service';
+import {toPromise} from 'rxjs/operator/toPromise';
+import {SkillSet} from '../../../../shared/_models/skill-set.model';
 
 @Component({
   selector: 'app-view-skill-set',
@@ -10,19 +12,17 @@ import {SkillSetService} from '../../_services/skill-set.service';
 })
 export class ViewSkillSetComponent implements OnInit {
 
-  skillSet: any;
-  skillSetSubitems = [];
+  @Input() permalink: string;
 
-  constructor(private route: ActivatedRoute,
-              private skillSetService: SkillSetService,
+  skillSet: SkillSet;
+
+  constructor(private skillSetService: SkillSetService,
               private userService: UserService) {
   }
 
-  ngOnInit() {
-    this.route.params.subscribe((params: Params) => {
-      this.skillSetService.getSkillSet(params['permalink']).subscribe(response => {
-        this.skillSet = response.json().data;
-      });
+  async ngOnInit() {
+    this.skillSetService.getSkillSet(this.permalink).subscribe((data: SkillSet) => {
+      this.skillSet = data;
     });
   }
 

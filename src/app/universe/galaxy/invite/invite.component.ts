@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
-import {GalaxyService} from '../_services/galaxy.service';
+import {GalaxyService} from '../../../shared/_services/galaxy.service';
+import {Galaxy} from '../../../shared/_models/galaxy.model';
 
 @Component({
   selector: 'app-invite',
@@ -31,8 +32,8 @@ export class InviteComponent implements OnInit {
   }
 
   getGalaxy() {
-    this.galaxyService.get(this.permalink).subscribe(data => {
-      this.galaxy = data.json();
+    this.galaxyService.get(this.permalink).subscribe((data: Galaxy) => {
+      this.galaxy = data;
     });
   }
 
@@ -44,7 +45,7 @@ export class InviteComponent implements OnInit {
 
   sendInvite() {
     this.galaxyService.sendInvite(this.user, this.permalink).subscribe(data => {
-      // this.user.email = '';
+      //
     });
   }
 

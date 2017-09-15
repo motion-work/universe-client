@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {SkillSetService} from '../../_services/skill-set.service';
-import {SearchService} from '../../_services/search.service';
+import {SkillSetService} from '../../../../shared/_services/skill-set.service';
+import {SearchService} from '../../../../shared/_services/search.service';
 import {Subject} from 'rxjs/Subject';
 import {Observable} from 'rxjs/Observable';
 
@@ -11,6 +11,7 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
+import {SkillSet} from "../../../../shared/_models/skill-set.model";
 
 @Component({
   selector: 'app-explore',
@@ -22,8 +23,8 @@ export class ExploreComponent implements OnInit {
 
   private searchTerm = new Subject<string>();
 
-  skillSets = [];
-  searchResults = [];
+  skillSets: SkillSet[];
+  searchResults: SkillSet[];
   searching = false;
 
 
@@ -32,13 +33,13 @@ export class ExploreComponent implements OnInit {
   }
 
   async ngOnInit() {
-    this.skillSets = await this.skillSetService.skillSets().map(it => it.json()).toPromise();
+    this.skillSets = await this.skillSetService.skillSets().toPromise();
 
     this.searchTerm.debounceTime(200).subscribe(query => {
       this.searching = true;
-      this.searchService.skillSets(query).subscribe(res => {
+      this.searchService.skillSets(query).subscribe((data: SkillSet[]) => {
         this.searching = false;
-        this.searchResults = res.json();
+        this.searchResults = data;
       });
     });
   }
@@ -47,6 +48,8 @@ export class ExploreComponent implements OnInit {
   search(term: string): void {
     if (term.length > 2) {
       this.searchTerm.next(term);
+    } else {
+      this.searchResults = [];
     }
   }
 

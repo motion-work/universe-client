@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from '../../_services/user.service';
+import {UserService} from '../../../../shared/_services/user.service';
 
 @Component({
   selector: 'app-overview',
@@ -8,14 +8,19 @@ import {UserService} from '../../_services/user.service';
 })
 export class OverviewComponent implements OnInit {
 
-  mySkills = [];
+  subscribedSkillSets = [];
+  createdSkillSets = [];
 
   constructor(private userService: UserService) {
   }
 
   ngOnInit() {
-    this.userService.mySkills().subscribe(response => {
-      this.mySkills = response.json();
+    this.userService.subscribedSkillSets().subscribe(response => {
+      this.subscribedSkillSets = response.json();
+    });
+
+    this.userService.createdSkillSets().subscribe(response => {
+      this.createdSkillSets = response.json();
     });
   }
 

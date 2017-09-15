@@ -2,6 +2,8 @@ import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import {environment} from '../../../environments/environment';
 import {AuthHttp} from 'angular2-jwt';
+import {User} from '../../shared/_models/user.model';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class AuthService {
@@ -49,7 +51,7 @@ export class AuthService {
    *
    * @return {boolean}
    */
-  isLoggedIn() {
+  isLoggedIn(): boolean {
     return !!localStorage.getItem('token');
   }
 
@@ -58,8 +60,9 @@ export class AuthService {
    *
    * @return {Observable<Response>}
    */
-  me() {
-    return this.authHttp.get(AuthService.HOST + 'api/me');
+  me(): Observable<User> {
+    return this.authHttp.get(AuthService.HOST + 'api/me')
+      .map(response => response.json() as User);
   }
 
   /**

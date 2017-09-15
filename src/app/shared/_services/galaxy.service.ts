@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
 import {AuthHttp} from 'angular2-jwt';
-import {AuthService} from '../../../authentication/_services/auth.service';
+import {AuthService} from '../../authentication/_services/auth.service';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/operator/map';
 import {Observable} from 'rxjs/Observable';
+import {Galaxy} from "../_models/galaxy.model";
 
 @Injectable()
 export class GalaxyService {
@@ -23,8 +24,9 @@ export class GalaxyService {
    * @param permalink
    * @return {Observable<Response>}
    */
-  get(permalink) {
-    return this.http.get(AuthService.HOST + `api/galaxy/${permalink}`);
+  get(permalink): Observable<Galaxy> {
+    return this.http.get(AuthService.HOST + `api/galaxy/${permalink}`)
+      .map(response => response.json() as Galaxy);
   }
 
   /**
@@ -84,8 +86,10 @@ export class GalaxyService {
    *
    * @return {Observable<Response>}
    */
-  currentGalaxy() {
-    return this.http.get(AuthService.HOST + `api/galaxy/${this.getCurrentGalaxyPermalink()}`);
+  currentGalaxy(): Observable<Galaxy> {
+    return this.http
+      .get(AuthService.HOST + `api/galaxy/${this.getCurrentGalaxyPermalink()}`)
+      .map(response => response.json() as Galaxy);
   }
 
 }

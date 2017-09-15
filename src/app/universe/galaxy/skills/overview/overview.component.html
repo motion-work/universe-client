@@ -7,13 +7,27 @@
 
     <div class="row">
 
-      <div *ngIf="mySkills?.length == 0" class="col-12 mb-4 animated fadeIn"><i class="text-muted">Nothing found</i>
+      <div *ngIf="subscribedSkillSets?.length == 0" class="col-12 mb-4 animated fadeIn"><i class="text-muted">Nothing found</i>
       </div>
 
-      <div *ngFor="let skillSet of mySkills" class="col-sm-12 col-md-6 col-lg-4 mb-4 animated fadeIn">
-        <a href="#" class="link-unstyled" routerLink="{{ skillSet.permalink }}">
+      <app-skill-card *ngFor="let skillSet of subscribedSkillSets" [skillSet]="skillSet"
+                      class="col-sm-12 col-md-6 col-lg-4 mb-4">
+      </app-skill-card>
+    </div>
+
+    <div class="created mt-5">
+    <h4 class="text-muted mb-3">Created</h4>
+    <hr>
+
+    <div class="row">
+
+      <div *ngIf="createdSkillSets?.length == 0" class="col-12 mb-4 animated fadeIn"><i class="text-muted">Nothing found</i>
+      </div>
+
+      <div *ngFor="let skillSet of createdSkillSets" class="col-sm-12 col-md-6 col-lg-4 mb-4 animated fadeIn">
+        <a class="link-unstyled" routerLink="subscribed/{{ skillSet.permalink }}">
           <div class="card bg-dark text-white">
-            <div class="card-img-overlay gradient d-flex flex-column justify-content-around">
+            <div class="card-img-overlay gradient-red d-flex flex-column justify-content-around">
               <h3 class="card-title">{{ skillSet.name }}</h3>
               <div class="information">
               <div class="chapters"><span>{{ skillSet.skill_set_items.length + 1 }} Chapers</span></div>

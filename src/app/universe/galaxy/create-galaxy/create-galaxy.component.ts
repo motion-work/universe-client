@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {GalaxyService} from '../_services/galaxy.service';
+import {GalaxyService} from '../../../shared/_services/galaxy.service';
 import {Router} from '@angular/router';
 
 @Component({
